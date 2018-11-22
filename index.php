@@ -14,21 +14,8 @@
 </head>
 
 <body>
-<!-- navbar -->
-  <div class="navbar-fixed ">
-    <nav class="indigo">
-
-      <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="login.php" class="waves-effect waves-light">Log In</a></li>
-          <li><a href="register.php" class="waves-effect waves-light">Register</a></li>
-        </ul>
-      </div>
-
-    </nav>
-  </div>
-
+  <?php include "navbar.php"; ?>
+  <?=$nav?>
 
   <main class="container">
     <h1 class="center-align">Cursos</h1>
