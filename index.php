@@ -47,7 +47,7 @@
         <p>$curso->curso_fecha</p>
         </div>
       <div class='card-action right-align'>
-        <a href='preguntas.php/id=$curso->curso_cod'>Preguntas</a>
+        <a class='teal-text' href='preguntas.php?id=$curso->curso_cod'>Preguntas</a>
       </div>
     </div>";
 
