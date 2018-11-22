@@ -16,7 +16,7 @@ if($_SESSION['nombre'] != ""){
       <div class="nav-wrapper">
         <a href="#!" class="brand-logo">Logo</a>
         <ul class="right hide-on-med-and-down">
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">arrow_drop_down</i></a></li>
+            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].'<i class="material-icons right">arrow_drop_down</i></a></li>
          </ul>
       </div>
       

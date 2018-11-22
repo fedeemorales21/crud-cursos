@@ -18,6 +18,7 @@
     
             if (password_verify($password,$registro['pass'])) {
                 $i++;
+                $usuario=$registro['nombre']." ".$registro['apellido'];
             }
             
     
@@ -25,6 +26,9 @@
 
 
         if ($i>0) {
+
+            session_start();
+            $_SESSION['nombre']=$usuario;
             header("Location:index.php");
         }else {
             header("Location:login.php");
