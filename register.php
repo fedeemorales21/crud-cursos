@@ -1,3 +1,9 @@
+<?php    
+   session_start();
+    if (isset($_SESSION["nombre"])) {
+       header("location:index.php");
+    }  
+ ?>
 <!DOCTYPE html>
 <html>
 
@@ -59,7 +65,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <a class="btn waves-effect waves-light left" href="index.php">
-                        <i class="material-icons right">undo</i>
+                        <i class="material-icons left">undo</i>
                         Volver
                     </a>
                     <button class="btn waves-effect waves-light right" type="submit" name="btn_reg">Registrar
