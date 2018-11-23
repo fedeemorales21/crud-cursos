@@ -14,7 +14,7 @@ if(isset($_SESSION['nombre'])){
     <nav class="indigo">
     
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
+        <a href="#!" class="brand-logo"><i class="fab fa-studiovinari fa-2x"></i></a>
         <ul class="right hide-on-med-and-down">
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].'<i class="material-icons right">arrow_drop_down</i></a></li>
          </ul>

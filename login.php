@@ -12,6 +12,8 @@
 </head>
 
 <body>
+    <?php include "navbar.php"; ?>
+    <?=$nav?>
     <div class="row container section">
         <form class="col s12" action="datoslog.php" method="POST">
            <div class="row">
@@ -29,8 +31,12 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <button class="btn waves-effect waves-light right" type="submit" name="enviar">Submit
-                        <i class="material-icons right">send</i>
+                    <a class="btn waves-effect waves-light left" href="index.php">
+                        <i class="material-icons right">undo</i>
+                        Volver
+                    </a>
+                    <button class="btn waves-effect waves-light right" type="submit" name="enviar">Entrar
+                        <i class="material-icons right">redo</i>
                     </button>
                 </div>
             </div>

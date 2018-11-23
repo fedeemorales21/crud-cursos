@@ -3,7 +3,7 @@
 session_start();
 
 unset($_SESSION["nombre"]);
-// unset($_SESSION["perfil"]);
+unset($_SESSION["perfil"]);
 $_SESSION=array();
 session_destroy();
 
