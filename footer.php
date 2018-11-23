@@ -10,7 +10,7 @@
                 <a class="white-text" href="#"><i class="fab fa-instagram"></i></a>
                 <a class="white-text section" href="#"><i class="fab fa-twitter"></i></a>
                 <div class="divider"></div>
-                <a href="#" class="white-text section">Otras Consultas</a>
+                <a href="contacto.php" class="white-text section">Otras Consultas</a>
               </div>
             </div>
           </div>

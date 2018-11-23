@@ -71,7 +71,7 @@ if(isset($_SESSION['nombre'])){
     <nav class="indigo">
     
       <div class="nav-wrapper">
-        <a href="#!" class="brand-logo">Logo</a>
+        <a href="#!" class="brand-logo"><i class="fab fa-studiovinari fa-2x"></i></a>
         <ul class="right hide-on-med-and-down">
           <li><a href="login.php" class="waves-effect waves-light">Log In</a></li>
           <li><a href="register.php" class="waves-effect waves-light">Register</a></li>
