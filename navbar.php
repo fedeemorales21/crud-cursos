@@ -1,14 +1,14 @@
 
 <?php
 session_start();
-if($_SESSION['nombre'] != ""){
-
- $nav='
+if(isset($_SESSION['nombre'])){
+  if($_SESSION['nombre']!=""){
+  $nav='
     <ul id="dropdown1" class="dropdown-content">
         <li><a href="#!">one</a></li>
         <li><a href="#!">two</a></li>
         <li class="divider"></li>
-        <li><a href="#!">three</a></li>
+        <li><a href="cerrar_session.php">Cerrar Sesion</a></li>
     </ul>
     <div class="navbar-fixed ">
     <nav class="indigo">
@@ -22,7 +22,7 @@ if($_SESSION['nombre'] != ""){
       
     </nav>
   </div>';
-
+  }
 
 }else {
     $nav='<div class="navbar-fixed ">
@@ -38,5 +38,8 @@ if($_SESSION['nombre'] != ""){
       
     </nav>
   </div>';
+
+
+  
 }
   ?>
