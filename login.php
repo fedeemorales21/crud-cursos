@@ -1,9 +1,11 @@
-<?php 
-    session_start();
-    if (isset($_SESSION["nombre"])) {
-       header("location:index.php");
-     }
- ?>
+<?php
+    if(isset($_SESSION)) { 
+        session_start();
+        if ($_SESSION['perfil']!='p') {
+            header("location:index.php");
+        }
+    }    
+?>
   <!DOCTYPE html>
   <html>
 

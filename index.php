@@ -35,7 +35,6 @@
         </div>
       <div class='card-action right-align'>
         <a class='teal-text' href='preguntas.php?id=$curso->curso_cod'>Preguntas</a>
-        <a class='teal-text' href='observaciones.php?id=$curso->curso_cod'>Observaciones</a>
       </div>
     </div>";
 
