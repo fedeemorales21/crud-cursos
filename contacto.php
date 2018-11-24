@@ -72,7 +72,7 @@
 
             <div class="row">
                 <div class="input-field col s12">
-                    <button class="btn waves-effect waves-light right" type="submit" name="btn_com">Enviar
+                    <button class="btn waves-effect waves-light right" type="submit" name="btn_con">Enviar
                         <i class="material-icons right">send</i>
                     </button>
                 </div>
@@ -83,20 +83,22 @@
     </div>
     
     <?php
-        $texto=$_POST["comentarios"];
-        $emisor=$_POST["email"];
-        $asunto=$_POST["asunto"];
-        $nombre=$_POST["nombre"];
-        $destinatario='federicomorales@gmail.com';
+        if(isset($_POST['btn_con'])){
+            $texto=$_POST["comentarios"];
+            $emisor=$_POST["email"];
+            $asunto=$_POST["asunto"];
+            $nombre=$_POST["nombre"];
+            $destinatario='federicomorales@gmail.com';
 
-        $exito= email($destinatario,$asunto,$texto,$header); 
+            $exito = email($destinatario,$asunto,$texto,$header); 
 
-        if ($exito) {
-              echo "</>Mensaje enviado</p>";
-        }else {
-              echo "</>Mensaje NO enviado</p>";
+            if ($exito) {
+                echo "<p>Mensaje enviado</p>";
+            }else {
+                echo "<p>Mensaje NO enviado</p>";
+            }
         }
-    ?>
+        ?>
 
   </main>
 
