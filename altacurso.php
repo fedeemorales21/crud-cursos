@@ -22,7 +22,7 @@
 
 
     </head>
-
+ <!-- arreglar insert ,controles -->
 <body>
     <?php include "navbar.php"; ?>
     <?=$nav?>
