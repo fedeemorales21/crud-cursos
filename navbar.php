@@ -23,8 +23,8 @@ if(isset($_SESSION['nombre'])){
     }elseif ($_SESSION['perfil']=='p') {
       $nav='
       <ul id="dropdown1" class="dropdown-content">
-          <li><a href="altacurso.php">Agregar Curso</a></li>
-          <li><a href="altapregunta.php">Agregar Pregunta</a></li>
+          <li><a href="altacurso.php">Mis Curso</a></li>
+          <li><a href="altapregunta.php">Agregar Preguntas</a></li>
           <li><a href="reportes.php">Reportes</a></li>
           <li class="divider"></li>
           <li><a href="cerrar_session.php">Cerrar Sesion</a></li>
