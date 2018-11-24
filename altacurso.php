@@ -22,8 +22,10 @@
 
 
     </head>
+
  <!-- arreglar insert ,controles -->
 <body>
+
     <?php include "navbar.php"; ?>
     <?=$nav?>
     <?php
@@ -70,8 +72,8 @@
                 <td><?php echo $cursos->curso_desc; ?></td>
                 <td><?php echo $cursos->curso_fecha; ?></td>
 
-                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borrar.php?id=<?php echo $cursos->curso_cod;?>"><i class="material-icons ">delete</i></a></td>
-                <td><a data-position="left" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editar.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $personas->nombre; ?>&ape=<?php echo $personas->apellido; ?>&dir=<?php echo $personas->direccion; ?>"><i class="material-icons ">edit</i></a></td>
+                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borrarcurso.php?id=<?php echo $cursos->curso_cod;?>"><i class="material-icons ">delete</i></a></td>
+                <td><a data-position="left" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $personas->nombre; ?>&ape=<?php echo $personas->apellido; ?>&dir=<?php echo $personas->direccion; ?>"><i class="material-icons ">edit</i></a></td>
             </tr>
         <?php endforeach; ?>
 
