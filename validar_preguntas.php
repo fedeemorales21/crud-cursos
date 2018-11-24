@@ -13,5 +13,5 @@
     $sql="INSERT INTO preguntas (preg_desc,preg_tipo,curso_cod) VALUES(:descr,:tipo,:curso)";
     $resultado= $base->prepare($sql);
     $resultado->execute(array(":descr"=>$preg_desc,":tipo"=>$preg_tipo,":curso"=>$preg_curso));
-    header("Location:index.php");
+    header("Location:altapregunta.php");
 ?>

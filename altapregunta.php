@@ -28,7 +28,7 @@
     <?php
        include 'conexion.php';
        $registros = $base->query("SELECT * FROM preguntas")->fetchAll(PDO::FETCH_OBJ);
-       $tablaP = "<table>
+       $tablaP = "<table class='highlight centered responsive-table'>
                         <thead>
                         <tr>
                             <th>Pregunta Numero</th>
@@ -48,7 +48,7 @@
        
         }        
         $tablaP .= "<tr><form action='validar_preguntas.php' method='post'>
-                    <td><input type='text' name='desc'></td>
+                    <td></td><td><input type='text' name='desc'></td>
                     <td><input type='text' name='tipo'></td>
                     <td><input type='text' name='curso'></td>
                     <td><input type='submit' name='btn_preg'></td>
