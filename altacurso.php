@@ -1,5 +1,5 @@
 <?php
-    if(!isset($_SESSION)) { 
+    if(isset($_SESSION)) { 
         session_start();
         if ($_SESSION['perfil']!='p') {
             header("location:index.php");
@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+        <link rel="stylesheet" href="css/style.css">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,7 +49,7 @@
     <h1 class="center">Administración de cursos</h1>
     <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
-
+    <div class="container">
     <table class="highlight centered responsive-table">
         <thead>
             <tr>
@@ -92,7 +93,8 @@
         </tr>
     </tbody>
     </table>
-    </form>
+
+    </div>
     <p>&nbsp;</p>
 
   <?php include "footer.php" ?>

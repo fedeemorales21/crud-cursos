@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <link rel="stylesheet" href="css/style.css">
   <!--Let browser know website is optimized for mobile-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
@@ -51,7 +52,9 @@
                     <td></td><td><input type='text' name='desc'></td>
                     <td><input type='text' name='tipo'></td>
                     <td><input type='text' name='curso'></td>
-                    <td><input type='submit' name='btn_preg'></td>
+                    <td><button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
+                    <i class='material-icons'>send</i>
+                </button></td>
                     </form></tr></tbody></table>"; 
         echo $tablaP;
     ?>
