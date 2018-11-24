@@ -1,0 +1,25 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+}
+
+
+.redes i{ 
+    font-size: 30px;
+    margin: 10px 15px;
+}
+
+a.white-text.section.contacto {
+    padding:0 25px ;
+    font-size: 20px;
+}
+
+
+i.fab.fa-studiovinari.fa-2x {
+    font-size: 1.5em;
+}
