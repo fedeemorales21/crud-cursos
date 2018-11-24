@@ -1,5 +1,5 @@
 <?php
-    if(isset($_SESSION)) { 
+    if(!isset($_SESSION)) { 
         session_start();
         if ($_SESSION['perfil']!='p') {
             header("location:index.php");
