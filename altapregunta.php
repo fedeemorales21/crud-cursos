@@ -50,7 +50,11 @@
         }        
         $tablaP .= "<tr><form action='validar_preguntas.php' method='post'>
                     <td></td><td><input type='text' name='desc'></td>
-                    <td><input type='text' name='tipo'></td>
+                    <td><select>
+                    <option value='' disabled selected>Tipo</option>
+                    <option value='opc'>Opciones</option>
+                    <option value='txt'>Texto</option>
+                  </select></td>
                     <td><input type='text' name='curso'></td>
                     <td><button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
                     <i class='material-icons'>send</i>

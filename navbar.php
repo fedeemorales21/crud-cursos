@@ -4,7 +4,7 @@ session_start();
 if(isset($_SESSION['nombre'])){
   if($_SESSION['nombre']!=""){
     if ($_SESSION['perfil']=='g'){
-     $nav='
+     $nav='<header>
       <ul id="dropdown1" class="dropdown-content">
           <li><a href="cerrar_session.php">Cerrar Sesion</a></li>
       </ul>
@@ -19,9 +19,9 @@ if(isset($_SESSION['nombre'])){
         </div>
         
       </nav>
-    </div>';
+    </div></header>';
     }elseif ($_SESSION['perfil']=='p') {
-      $nav='
+      $nav='<header>
       <ul id="dropdown1" class="dropdown-content">
           <li><a href="altacurso.php">Mis Cursos</a></li>
           <li><a href="altapregunta.php">Agregar Preguntas</a></li>
@@ -40,9 +40,9 @@ if(isset($_SESSION['nombre'])){
         </div>
         
       </nav>
-    </div>';
+    </div></header>';
     }elseif ($_SESSION['perfil']=='a') {
-      $nav='
+      $nav='<header>
       <ul id="dropdown1" class="dropdown-content">
           <li><a href="adm_usuarios.php">Adm. Usuarios</a></li>
           <li><a href="adm_cursos.php">Adm. Cursos</a></li>
@@ -60,12 +60,12 @@ if(isset($_SESSION['nombre'])){
         </div>
         
       </nav>
-    </div>';
+    </div></header>';
     }
   }
 
 }else {
-    $nav='<div class="navbar-fixed ">
+    $nav='<header><div class="navbar-fixed ">
     <nav class="indigo">
     
       <div class="nav-wrapper">
@@ -77,6 +77,6 @@ if(isset($_SESSION['nombre'])){
       </div>
       
     </nav>
-  </div>';
+  </div></header>';
 }
   ?>

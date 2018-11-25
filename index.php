@@ -15,10 +15,10 @@
 </head>
 
 <body>
-<header>
+
   <?php include "navbar.php"; ?>
   <?=$nav?>
-</header>
+
   <main class="container">
     <h1 class="center-align">Cursos</h1>
 

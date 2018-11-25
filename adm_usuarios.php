@@ -80,7 +80,7 @@
                 <td><?php if($usuario->tipo == 'g'){echo "Alumno";}elseif($usuario->tipo == 'p'){echo "Profesor";}elseif($usuario->tipo == 'a'){echo "Administrador";} ?></td>
 
                 <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borraruser.php?id=<?php echo $usuario->cod_persona;?>"><i class="material-icons ">delete</i></a></td>
-                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $usuario->cod_persona; ?>&nom=<?php echo  $usuario->nombre; ?>&ape=<?php echo $usuario->apellido; ?>&dni=<?php echo $usuario->dni; ?>&tel=<?php echo $usuario->telefono; ?>&mail=<?php echo $usuario->email; ?>tipo=<?php echo $usuario->tipo; ?>"><i class="material-icons ">edit</i></a></td>
+                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editaruser.php?id=<?php echo $usuario->cod_persona; ?>&nom=<?php echo  $usuario->nombre; ?>&ape=<?php echo $usuario->apellido; ?>&dni=<?php echo $usuario->dni; ?>&tel=<?php echo $usuario->telefono; ?>&mail=<?php echo $usuario->email; ?>&tipo=<?php echo $usuario->tipo; ?>"><i class="material-icons ">edit</i></a></td>
             </tr>
         <?php endforeach; ?>
 
