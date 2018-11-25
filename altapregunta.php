@@ -25,43 +25,61 @@
 
 <main class="container">
     <h1 class="center-align">Preguntas</h1>
- 
-    <?php
+       <?php
        include 'conexion.php';
        $registros = $base->query("SELECT * FROM preguntas")->fetchAll(PDO::FETCH_OBJ);
-       $tablaP = "<table class='highlight centered responsive-table'>
-                        <thead>
-                        <tr>
-                            <th>Pregunta Numero</th>
-                            <th>Pregunta Descripcion</th>
-                            <th>Pregunta Tipo</th>
-                            <th>Curso</th>
-                        </tr>
-                        </thead>
-                        <tbody>";
-       foreach ($registros as $preguntas) {     
-          $tablaP .= "<tr>
-            <td>$preguntas->preg_nro</td>
-            <td>$preguntas->preg_desc</td>
-            <td>$preguntas->preg_tipo</td>
-            <td>$preguntas->curso_cod</td>
-          </tr>";
+       ?>
+       <form action='validar_preguntas.php' method='post'>
+       <table class='highlight centered responsive-table'>
+          <thead>
+            <tr>
+              <th>Pregunta Numero</th>
+              <th>Pregunta Descripcion</th>
+               <th>Pregunta Tipo</th>
+               <th>Curso</th>
+            </tr>
+          </thead>
+          <tbody>
+       <?php foreach ($registros as $preguntas): ?>    
+        <tr>
+            <td><?=$preguntas->preg_nro?></td>
+            <td><?=$preguntas->preg_desc?></td>
+            <td><?=$preguntas->preg_tipo?></td>
+            <td><?=$preguntas->curso_cod?></td>
+            <td>
+              <a data-position='left' data-tooltip='Borrar' class='white-text red waves-effect waves-light btn tooltipped'
+               href='borrarpreg.php?id=<?php echo $preguntas->preg_nro;?>'>
+               <i class='material-icons'>delete</i></a></td>
+               <td>
+               <a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped"
+                href="editarpreg.php?id=<?php echo $preguntas->preg_nro;?>&desc=<?php echo  $preguntas->preg_desc; ?>&tipo=<?php echo $preguntas->preg_tipo; ?>&cur=<?php echo $preguntas->curso_cod; ?>"
+                ><i class="material-icons ">edit</i></a></td>
+   
+
+          </tr>
+        <?php endforeach ?>
        
-        }        
-        $tablaP .= "<tr><form action='validar_preguntas.php' method='post'>
-                    <td></td><td><input type='text' name='desc'></td>
-                    <td><select>
-                    <option value='' disabled selected>Tipo</option>
-                    <option value='opc'>Opciones</option>
-                    <option value='txt'>Texto</option>
-                  </select></td>
-                    <td><input type='text' name='curso'></td>
-                    <td><button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
-                    <i class='material-icons'>send</i>
-                </button></td>
-                    </form></tr></tbody></table>"; 
-        echo $tablaP;
-    ?>
+                
+        <tr>
+          <td></td>
+          <td><input type='text' name='desc'></td>
+          <td>
+            <select>
+              <option value='' disabled selected>Tipo</option>
+              <option value='opc'>Opciones</option>
+              <option value='txt'>Texto</option>
+              </select>
+          </td>
+          <td><input type='text' name='curso'></td>
+          <td>
+            <button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
+              <i class='material-icons'>send</i>
+            </button></td>
+        </tr>
+      </tbody>
+    </table> 
+    </form>
+ 
 </main>
 
 <?php include "footer.php" ?>
