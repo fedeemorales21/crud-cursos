@@ -34,7 +34,7 @@
     $registros = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
     
     $prof=$_SESSION["nombre"];
-    if (isset($_POST['brn_cur'])) {
+    if (isset($_POST['btn_cur'])) {
         $nombre=$_POST["nom"];
         $desc=$_POST["desc"];
         $fecha=$_POST["fecha"];
@@ -86,7 +86,7 @@
             <td><input type='text' name='desc' requied></td>
             <td><input type="text" class="datepicker" name='fecha'></td>
             <td>
-                <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="action">
+                <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_cur">
                     <i class="material-icons">send</i>
                 </button>
             </td>
