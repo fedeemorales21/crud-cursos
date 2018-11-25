@@ -46,6 +46,12 @@
                 <table>
                     <?php while ($registros=$resultado->fetch(PDO::FETCH_OBJ) ):?>
                     <tr>
+                    <input type="hidden" name="" value="<?=$registros->preg_nro ?>">
+                    <input type="hidden" name="" value="<?=$registros->preg_desc ?>">
+                    <input type="hidden" name="" value="<?=$registros->preg_tipo ?>">
+                    <input type="hidden" name="" value="<?=$registros->curso_cod ?>">
+                   
+
                     <td><?=$registros->preg_desc?></td>
                         <td><?php if ($registros->preg_tipo == 'texto'){
                             echo "<input type='text' name='rta'>";
