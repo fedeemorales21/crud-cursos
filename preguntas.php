@@ -30,21 +30,24 @@
         ?>
         <?=$nav?>
 
-        <main>
+        <main class="container">
         
             <?php
                 $cod=$_GET['id'];
-                $registros = $base->prepare("SELECT * FROM preguntas WHERE curso_cod=:id")->fetchAll(PDO::FETCH_OBJ);
-                
-                $registros->execute(array(":id"=>$id));
+
+                $sql="SELECT * FROM preguntas WHERE curso_cod=:id";
+                $resultado=$base->prepare($sql);
+                $resultado->execute(array(":id"=>$cod));
+
+
              ?>
 
             <form action="" method="post">
                 <table>
-                    <?php foreach ($registros as $preguntas):?>
+                    <?php while ($registros=$resultado->fetch(PDO::FETCH_OBJ) ):?>
                     <tr>
-                    <td><?=$preguntas->preg_desc?></td>
-                        <td><?php if ($preguntas->preg_tipo == 'texto'){
+                    <td><?=$registros->preg_desc?></td>
+                        <td><?php if ($registros->preg_tipo == 'texto'){
                             echo "<input type='text' name='rta'>";
                         }
                         else {
@@ -83,11 +86,11 @@
                         } ?></td>
                     
                     </tr>
-                    <?php endforeach; ?>
+                    <?php endwhile; ?>
                     <tr>
                         <td></td>
                         <td>
-                            <button data-position="right" data-tooltip="Enviar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_res">
+                            <button data-position="right" data-tooltip="Enviar" class=" right green btn waves-effect waves-light tooltipped" type="submit" name="btn_res">
                                 <i class="material-icons">send</i>
                             </button>
                         </td>
