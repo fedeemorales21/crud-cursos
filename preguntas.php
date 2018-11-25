@@ -1,7 +1,7 @@
 <?php
-    if(isset($_SESSION)) { 
+    if(!isset($_SESSION)) { 
         session_start();
-        if ($_SESSION['perfil']!='g') {
+        if ($_SESSION['perfil']!='g' && $_SESSION['nombre']=='') {
             header("location:index.php");
         }
     }    
@@ -42,7 +42,7 @@
 
              ?>
 
-            <form action="" method="post">
+            <form action="respuesta.php" method="post">
                 <table>
                     <?php while ($registros=$resultado->fetch(PDO::FETCH_OBJ) ):?>
                     <tr>
@@ -54,31 +54,31 @@
                         echo "
                         <p>
                                 <label>
-                                    <input name='rta' type='radio'/>
+                                    <input name='rta' type='radio' value='1' />
                                     <span>Excelente</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name='rta' type='radio'/>
+                                    <input name='rta' type='radio' value='2' />
                                     <span>Muy Bien</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name='rta' type='radio'/>
+                                    <input name='rta' type='radio' value='3' />
                                     <span>Bien</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name='rta' type='radio'/>
+                                    <input name='rta' type='radio' value='4' />
                                     <span>Regular</span>
                                 </label>
                             </p>
                             <p>
                                 <label>
-                                    <input name='rta' type='radio'/>
+                                    <input name='rta' type='radio' value='5' />
                                     <span>Malo</span>
                                 </label>
                             </p>
