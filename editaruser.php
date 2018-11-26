@@ -89,7 +89,12 @@
     <tr>
       <td class="center">Tipo</td>
       <td><label for="tipo"></label>
-      <input type="text" name="tipo" id="tipo"value="<?php echo $tipo; ?>"></td>
+        <select name="tipo" id="tipo">
+          <option value="g" <?php if($tipo=='g'){echo "selected";}?>>Alumno</option>
+          <option value="p" <?php if($tipo=='p'){echo "selected";}?>>Profesor</option>
+          <option value="a" <?php if($tipo=='a'){echo "selected";}?>>Administrador</option>
+        </select>
+      </td>
     </tr>
      <tr>
         <td>
