@@ -24,7 +24,6 @@
 
     </head>
 
- <!-- arreglar insert ,controles -->
 <body>
 
     <?php include "navbar.php"; ?>
@@ -45,8 +44,8 @@
         header("Location:index.php");
     }
     ?>
-
-    <h1 class="center">Administración de cursos</h1>
+    <main>
+     <h1 class="center">Administración de cursos</h1>
     <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
     <div class="container">
@@ -74,7 +73,7 @@
                 <td><?php echo $cursos->curso_fecha; ?></td>
 
                 <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borrarcurso.php?id=<?php echo $cursos->curso_cod;?>"><i class="material-icons ">delete</i></a></td>
-                <td><a data-position="left" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $personas->nombre; ?>&ape=<?php echo $personas->apellido; ?>&dir=<?php echo $personas->direccion; ?>"><i class="material-icons ">edit</i></a></td>
+                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $cursos->curso_nombre; ?>&prof=<?php echo $cursos->curso_profesor; ?>&desc=<?php echo $cursos->curso_desc; ?>&fec=<?php echo $cursos->curso_fecha;?>"><i class="material-icons ">edit</i></a></td>
             </tr>
         <?php endforeach; ?>
 
@@ -96,6 +95,7 @@
 
     </div>
     <p>&nbsp;</p>
+    </main>
 
   <?php include "footer.php" ?>
   <?=footer()?>
@@ -103,6 +103,14 @@
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
   <script>
+     document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {
+            format : "yyyy-mm-dd"
+        });
+     });
+
+
      M.AutoInit();
   </script>
 </body>
