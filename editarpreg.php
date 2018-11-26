@@ -65,7 +65,11 @@
     <tr>
       <td class="center">Tipo</td>
       <td><label for="tipo"></label>
-      <input type="text" name="tipo" id="tipo"value="<?php echo $tipo; ?>"></td>
+        <select name="tipo">
+          <option value='opciones' <?php if($tipo=='opciones'){echo "selected";}?>>Opciones</option>
+          <option value='texto' <?php if($tipo=='texto'){echo "selected";}?>>Texto</option>
+         </select>
+      </td>
     </tr>
 
     <tr>
