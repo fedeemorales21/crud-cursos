@@ -41,7 +41,7 @@
         $sql="INSERT INTO cursos (curso_nombre,curso_profesor,curso_desc,curso_fecha) VALUES(:nom,:prof,:descr,:fecha)";
         $resultado= $base->prepare($sql);
         $resultado->execute(array(":nom"=>$nombre,":prof"=>$prof,":descr"=>$desc,":fecha"=> $fecha));
-        header("Location:index.php");
+        header("Location:altacurso.php");
     }
     ?>
     <main>
