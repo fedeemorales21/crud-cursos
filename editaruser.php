@@ -44,12 +44,14 @@
     header("Location:adm_usuarios.php");
   }
 
+  if (isset($_POST["btn_can"])){
+    header("Location:adm_usuarios.php");
+  }
+
  ?>
 
 
-<p>
 
-</p>
 <p>&nbsp;</p>
 <div class="container">
 <form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -90,7 +92,11 @@
       <input type="text" name="tipo" id="tipo"value="<?php echo $tipo; ?>"></td>
     </tr>
      <tr>
-        <td></td>
+        <td>
+        <button data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
+            <i class="material-icons">close</i>
+          </button>
+        </td>
       <td class="right">
            <button data-position="right" data-tooltip="Guardar cambios" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_act">
                 <i class="material-icons">save</i>

@@ -40,6 +40,10 @@
     header("Location:altacurso.php");
   }
 
+  if (isset($_POST["btn_can"])){
+    header("Location:altacurso.php");
+  } 
+
  ?>
 
 
@@ -78,7 +82,11 @@
     </tr>
 
      <tr>
-        <td></td>
+        <td>
+          <button data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
+            <i class="material-icons">close</i>
+          </button>
+        </td>
       <td class="right">
            <button data-position="right" data-tooltip="Guardar cambios" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_act">
                 <i class="material-icons">save</i>

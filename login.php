@@ -1,10 +1,10 @@
 <?php
-    if(!isset($_SESSION)) { 
-        session_start();
-        if ($_SESSION['nombre']!='') {
-            header("location:index.php");
-        }
-    }    
+    // if(!isset($_SESSION)) { 
+    //     session_start();
+    //     if ($_SESSION['nombre']!='') {
+    //         header("location:index.php");
+    //     }
+    // }    
 ?>
   <!DOCTYPE html>
   <html>
@@ -15,6 +15,7 @@
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
                 <!--Import materialize.css-->
                 <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+                <link rel="stylesheet" href="css/style.css">
 
                 <!--Let browser know website is optimized for mobile-->
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -23,7 +24,8 @@
         <body>
             <?php include "navbar.php"; ?>
             <?=$nav?>
-            <div class="row container section">
+            <main class="row container section">
+                <h1 class="center">Entrar a la cuenta</h1>
                 <form class="col s12" action="datoslog.php" method="POST">
                 <div class="row">
                         <div class="input-field col s12">
@@ -50,7 +52,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
+            </main>
 
             <?php include "footer.php" ?>
             <?=footer()?>

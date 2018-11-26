@@ -45,7 +45,7 @@ if(isset($_SESSION['nombre'])){
       $nav='<header>
       <ul id="dropdown1" class="dropdown-content">
           <li><a href="adm_usuarios.php">Adm. Usuarios</a></li>
-          <li><a href="adm_cursos.php">Adm. Cursos</a></li>
+          <li><a href="altacurso.php">Adm. Cursos</a></li>
           <li class="divider"></li>
           <li><a href="cerrar_session.php">Cerrar Sesion</a></li>
       </ul>

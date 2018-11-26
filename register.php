@@ -1,10 +1,10 @@
 <?php
-    if(!isset($_SESSION)) { 
-        session_start();
-        if ($_SESSION['nombre']!='') {
-            header("location:index.php");
-        }
-    }    
+    // if(!isset($_SESSION)) { 
+    //     session_start();
+    //     if ($_SESSION['nombre']!='') {
+    //         header("location:index.php");
+    //     }
+    // }    
 ?>
 <!DOCTYPE html>
 <html>
@@ -26,6 +26,7 @@
     <?=$nav?>
     <main>
     <div class="row container section">
+        <h1 class="center">Registrarse</h1>
         <form class="col s12" action="datosreg.php" method="POST">
             <div class="row">
                 <div class="input-field col s6">
