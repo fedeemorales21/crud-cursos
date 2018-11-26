@@ -1,10 +1,10 @@
 <?php
-    if(!isset($_SESSION)) { 
-        session_start();
-        if ($_SESSION['perfil']!='g' && $_SESSION['nombre']=='') {
-            header("location:index.php");
-        }
-    }    
+    // if(!isset($_SESSION)) { 
+        // session_start();
+        // if ($_SESSION['perfil']!='g' && $_SESSION['nombre']=='') {
+        //     header("location:index.php");
+        // }
+    // }    
 ?>
 
 
@@ -46,10 +46,10 @@
                 <table>
                     <?php while ($registros=$resultado->fetch(PDO::FETCH_OBJ) ):?>
                     <tr>
-                    <input type="hidden" name="" value="<?=$registros->preg_nro ?>">
-                    <input type="hidden" name="" value="<?=$registros->preg_desc ?>">
-                    <input type="hidden" name="" value="<?=$registros->preg_tipo ?>">
-                    <input type="hidden" name="" value="<?=$registros->curso_cod ?>">
+                    <input type="hidden" name="p_nro" value="<?=$registros->preg_nro ?>">
+                    <input type="hidden" name="p_desc" value="<?=$registros->preg_desc ?>">
+                    <input type="hidden" name="p_tipo" value="<?=$registros->preg_tipo ?>">
+                    <input type="hidden" name="p_curso" value="<?=$registros->curso_cod ?>">
                    
 
                     <td><?=$registros->preg_desc?></td>
@@ -58,43 +58,47 @@
                         }
                         else {
                         echo "
-                        <p>
+                        
                                 <label>
                                     <input name='rta' type='radio' value='1' />
                                     <span>Excelente</span>
                                 </label>
-                            </p>
-                            <p>
+                            
+                            
                                 <label>
                                     <input name='rta' type='radio' value='2' />
                                     <span>Muy Bien</span>
                                 </label>
-                            </p>
-                            <p>
+                            
+                            
                                 <label>
                                     <input name='rta' type='radio' value='3' />
                                     <span>Bien</span>
                                 </label>
-                            </p>
-                            <p>
+                            
+                            
                                 <label>
                                     <input name='rta' type='radio' value='4' />
                                     <span>Regular</span>
                                 </label>
-                            </p>
-                            <p>
+                            
+                            
                                 <label>
                                     <input name='rta' type='radio' value='5' />
                                     <span>Malo</span>
                                 </label>
-                            </p>
+                            
                             ";
                         } ?></td>
                     
                     </tr>
                     <?php endwhile; ?>
                     <tr>
-                        <td></td>
+                        <td>
+                            <a href="index.php" data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
+                                <i class="material-icons">close</i>
+                            </a>
+                        </td>
                         <td>
                             <button data-position="right" data-tooltip="Enviar" class=" right green btn waves-effect waves-light tooltipped" type="submit" name="btn_res">
                                 <i class="material-icons">send</i>

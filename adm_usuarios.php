@@ -1,10 +1,10 @@
 <?php
-    if(!isset($_SESSION)) { 
-        session_start();
-        if ($_SESSION['perfil']!='a') {
-            header("location:index.php");
-        }
-    }    
+    // if(!isset($_SESSION)) { 
+    //     session_start();
+    //     if ($_SESSION['perfil']!='a') {
+    //         header("location:index.php");
+    //     }
+    // }    
 ?>
 <!doctype html>
 <html>
@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+        <link rel="stylesheet" href="css/style.css">
 
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -32,7 +33,7 @@
     include 'conexion.php';
     $registros = $base->query("SELECT * FROM personas")->fetchAll(PDO::FETCH_OBJ);
     
-    if (isset($_POST['brn_per'])) {
+    if (isset($_POST['btn_per'])) {
         $nombre=$_POST["nom"];
         $apellido=$_POST["ape"];
         $dni=$_POST["dni"];
@@ -41,13 +42,13 @@
         $pass=password_hash($_POST["pass"],PASSWORD_DEFAULT);
         $tipo=$_POST["tipo"];
 
-        $sql="INSERT INTO pesonas (nombre,apellido,dni,telefono,email,pass,tipo) VALUES(:nom,:ape,:dni,:tel,:email,:pass,:tipo)";
+        $sql="INSERT INTO personas (nombre,apellido,dni,telefono,email,pass,tipo) VALUES(:nom,:ape,:dni,:tel,:email,:pass,:tipo)";
         $resultado= $base->prepare($sql);
         $resultado->execute(array(":nom"=>$nombre,":ape"=>$apellido,":dni"=>$dni,":tel"=>$tel,":email"=>$email,":pass"=>$pass,":tipo"=>$tipo));
         header("Location:adm_usuarios.php");
     }
     ?>
-
+    <main>
     <h1 class="center">Administración de usuarios</h1>
     <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
 
@@ -92,8 +93,8 @@
             <td><input type='text' name='dni' requied placeholder="DNI"></td>
             <td><input type='text' name='tel' requied placeholder="Teléfono" ></td>
             <td><input type='text' name='email' requied placeholder="E-mail" ></td>
-            <td><input type='text' name='pass' requied placeholder="Password" ></td>
-            <td><select>
+            <td><input type='password' name='pass' requied placeholder="Password" ></td>
+            <td><select name="tipo">
                     <option value="" disabled selected>Tipo</option>
                     <option value="g">Alumno</option>
                     <option value="p">Profesor</option>
@@ -102,7 +103,7 @@
             </td>
            
             <td>
-                <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="action">
+                <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_per">
                     <i class="material-icons">send</i>
                 </button>
             </td>
@@ -111,6 +112,7 @@
     </table>
     </div>
     </form>
+    </main>
     <p>&nbsp;</p>
 
   <?php include "footer.php" ?>

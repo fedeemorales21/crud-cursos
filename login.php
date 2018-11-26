@@ -25,7 +25,7 @@
             <?php include "navbar.php"; ?>
             <?=$nav?>
             <main class="row container section">
-                <h1 class="center">Entrar a la cuenta</h1>
+                <h1 class="center">Log In</h1>
                 <form class="col s12" action="datoslog.php" method="POST">
                 <div class="row">
                         <div class="input-field col s12">

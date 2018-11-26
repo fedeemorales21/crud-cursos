@@ -20,8 +20,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body>
-<?php include "navbar.php"; ?>
+<?php include "navbar.php";
+    include "conexion.php";
+ ?>
   <?=$nav?>
+
+
+
+<?php
+    if (isset($_POST['btn_preg'])) {
+      $preg_desc = $_POST['desc'] ;
+      $preg_tipo =  $_POST['tipo'] ;
+      $preg_curso =  $_POST['curso'] ;
+
+      $sql="INSERT INTO preguntas (preg_desc,preg_tipo,curso_cod) VALUES(:descr,:tipo,:curso)";
+      $resultado= $base->prepare($sql);
+      $resultado->execute(array(":descr"=>$preg_desc,":tipo"=>$preg_tipo,":curso"=>$preg_curso));
+      header("Location:altapregunta.php");
+    }
+      
+?>
+
+
 
 <main class="container">
     <h1 class="center-align">Preguntas</h1>
@@ -29,7 +49,7 @@
        include 'conexion.php';
        $registros = $base->query("SELECT * FROM preguntas")->fetchAll(PDO::FETCH_OBJ);
        ?>
-       <form action='validar_preguntas.php' method='post'>
+       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
        <table class='highlight centered responsive-table'>
           <thead>
             <tr>
@@ -53,10 +73,11 @@
                <td>
                <a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped"
                 href="editarpreg.php?id=<?php echo $preguntas->preg_nro;?>&desc=<?php echo  $preguntas->preg_desc; ?>&tipo=<?php echo $preguntas->preg_tipo; ?>&cur=<?php echo $preguntas->curso_cod; ?>"
-                ><i class="material-icons ">edit</i></a></td>
+                ><i class="material-icons ">edit</i></a>
+            </td>
    
 
-          </tr>
+        </tr>
         <?php endforeach ?>
        
                 
@@ -64,10 +85,10 @@
           <td></td>
           <td><input type='text' name='desc'></td>
           <td>
-            <select>
+            <select name="tipo">
               <option value='' disabled selected>Tipo</option>
-              <option value='opc'>Opciones</option>
-              <option value='txt'>Texto</option>
+              <option value='opciones'>Opciones</option>
+              <option value='texto'>Texto</option>
               </select>
           </td>
           <td><input type='text' name='curso'></td>
