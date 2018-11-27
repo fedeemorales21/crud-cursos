@@ -20,6 +20,7 @@
                     $i++;
                     $usuario=$registro['nombre']." ".$registro['apellido'];
                     $perfil=$registro['tipo'];
+                    $numid=$registro['cod_persona'];
                 }
                 
         
@@ -31,6 +32,8 @@
                 session_start();
                 $_SESSION['nombre']=$usuario;
                 $_SESSION['perfil']=$perfil;
+                $_SESSION['numid']=$numid;
+
                 header("Location:index.php");
             }else {
                 header("Location:login.php");
