@@ -47,7 +47,7 @@
     <h1 class="center-align">Preguntas</h1>
        <?php
        include 'conexion.php';
-       $registros = $base->query("SELECT * FROM preguntas")->fetchAll(PDO::FETCH_OBJ);
+       $registros = $base->query("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod")->fetchAll(PDO::FETCH_OBJ);
        ?>
        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
        <table class='highlight centered responsive-table'>
@@ -65,7 +65,7 @@
             <td><?=$preguntas->preg_nro?></td>
             <td><?=$preguntas->preg_desc?></td>
             <td><?=$preguntas->preg_tipo?></td>
-            <td><?=$preguntas->curso_cod?></td>
+            <td><?=$preguntas->curso_nombre?></td>
             <td>
               <a data-position='left' data-tooltip='Borrar' class='white-text red waves-effect waves-light btn tooltipped'
                href='borrarpreg.php?id=<?php echo $preguntas->preg_nro;?>'>
@@ -78,7 +78,7 @@
    
 
         </tr>
-        <?php endforeach ?>
+        <?php endforeach; ?>
        
                 
         <tr>
@@ -91,7 +91,23 @@
               <option value='texto'>Texto</option>
               </select>
           </td>
-          <td><input type='text' name='curso'></td>
+          <td>
+          <select name='curso'>
+            <option value="" disabled selected>Curso</option>
+            <?php
+              $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
+              foreach ($reg as $curso){
+            
+               echo "<option value='$curso->curso_cod'>
+                $curso->curso_nombre
+              </option>";
+              }
+            ?>
+          </select>
+          
+          </td>
+
+
           <td>
             <button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
               <i class='material-icons'>send</i>

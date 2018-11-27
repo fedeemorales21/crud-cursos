@@ -75,7 +75,25 @@
     <tr>
       <td class="center">Curso</td>
       <td><label for="cur"></label>
-      <input type="text" name="cur" id="cur"value="<?php echo $cur; ?>"></td>
+      
+      <select name="cur">
+        <?php
+          $opc='';
+          $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
+          foreach ($reg as $curso){
+            
+          $opc.="<option value='$curso->curso_cod'";
+          
+          if ($cur==$curso->curso_cod) { $opc.= ' selected';}
+          $opc.=" >$curso->curso_nombre</option>";
+           
+          }
+          echo $opc;
+        ?>
+          
+         </select>
+      
+      </td>
     </tr>
      <tr>
         <td>
