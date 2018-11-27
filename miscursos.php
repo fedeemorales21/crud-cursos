@@ -20,13 +20,15 @@
   <?=$nav?>
 
   <main class="container">
-    <h1 class="center-align">Cursos</h1>
+    <h1 class="center-align">Mis Cursos</h1>
 
     <?php
       include 'conexion.php';
       session_start();
-      if (!isset($_SESSION['numid'])) {
-         $registros = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
+      if (isset($_SESSION['numid'])) {
+        $num=$_SESSION['numid'];
+        $registros = $base->query("SELECT * FROM cursos WHERE curso_cod IN(SELECT curso_nro FROM curso_alumno WHERE alumno_nro=$num)")->fetchAll(PDO::FETCH_OBJ);
+        
         foreach ($registros as $curso) {
       
         echo "<div class='card white hoverable'>
@@ -37,27 +39,13 @@
           <p>$curso->curso_fecha</p>
           </div>
         <div class='card-action right-align'>
-          <a>&nbsp;</a>
+          <a class='teal-text' href='preguntas.php?id=$curso->curso_cod'>Preguntas</a>
         </div>
       </div>";
       }    
+     
       }else {
-        $num=$_SESSION['numid'];
-        $registros = $base->query("SELECT * FROM cursos WHERE curso_cod NOT IN (SELECT curso_nro FROM curso_alumno WHERE alumno_nro = $num)")->fetchAll(PDO::FETCH_OBJ);
-        foreach ($registros as $curso) {
-      
-        echo "<div class='card white hoverable'>
-          <div class='card-content '>
-          <span class='card-title indigo-text'>$curso->curso_nombre</span>
-          <p>$curso->curso_desc</p>
-          <p>$curso->curso_profesor</p>
-          <p>$curso->curso_fecha</p>
-          </div>
-        <div class='card-action right-align'>
-          <a class='white-text waves-effect waves-light btn orange lighten-1 pulse' href='inscrip.php?id=$curso->curso_cod&us=$num'>Inscribirse</a>
-        </div>
-      </div>";
-      }
+          header("Location:index.php");
       }
      
 ?>        

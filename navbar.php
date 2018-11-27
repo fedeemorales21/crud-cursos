@@ -6,6 +6,8 @@ if(isset($_SESSION['nombre'])){
     if ($_SESSION['perfil']=='g'){
      $nav='<header>
       <ul id="dropdown1" class="dropdown-content">
+          <li><a href="miscursos.php">Mis Cursos</a></li>
+          <li class="divider">Mis Cursos</li>
           <li><a href="cerrar_session.php">Cerrar Sesion</a></li>
       </ul>
       <div class="navbar-fixed ">

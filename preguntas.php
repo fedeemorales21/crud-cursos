@@ -1,10 +1,11 @@
 <?php
-    // if(!isset($_SESSION)) { 
-        // session_start();
-        // if ($_SESSION['perfil']!='g' && $_SESSION['nombre']=='') {
-        //     header("location:index.php");
-        // }
-    // }    
+    // if(!isset($_SESSION['nombre']) ) { 
+    //     session_start();
+        
+    // }else {
+    //     header("location:index.php");     
+    // }
+        
 ?>
 
 
@@ -41,7 +42,7 @@
 
 
              ?>
-
+            <h1 class="center section">Preguntas</h1>
             <form action="respuesta.php" method="post">
                 <table>
                     <?php while ($registros=$resultado->fetch(PDO::FETCH_OBJ) ):?>
@@ -95,7 +96,7 @@
                     <?php endwhile; ?>
                     <tr>
                         <td>
-                            <a href="index.php" data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
+                            <a href="miscursos.php" data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
                                 <i class="material-icons">close</i>
                             </a>
                         </td>
