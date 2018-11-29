@@ -63,13 +63,13 @@
                 <div class=" col s2">
                     <p>
                         <label>
-                            <input name="ord" type="radio" value='curso_fecha' />
+                            <input name="ord" type="radio" value='c.curso_fecha' />
                             <span>Fecha</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="ord" type="radio" value="curso_profesor" />
+                            <input name="ord" type="radio" value="c.curso_profesor" />
                             <span>Profesor</span>
                         </label>
                     </p>
@@ -85,7 +85,7 @@
     <?php
         if(isset($_POST['filt'])){
             $filtro='';
-            
+            $orden='';
             $profesor= (isset($_POST["profe"]) && !empty($_POST["profe"]))? $_POST["profe"]:"";
             $curso= (isset($_POST["curso"]) && !empty($_POST["curso"]))? $_POST["curso"]:"";
             $fecha= (isset($_POST["fecha"]) && !empty($_POST["fecha"]))? $_POST["fecha"]:"";
@@ -98,16 +98,16 @@
                 $filtro.= " AND c.curso_nombre = '$curso'";
             }
             if ($fecha != "") {
-                $filtro.= " AND c.curso_fecha = $fecha";
+                $filtro.= " AND c.curso_fecha = '$fecha'";
             }
 
             if ($ord != "") {
-                $filtro.= " ORDER BY  $ord";
+                $orden.= " ORDER BY $ord";
             }
 
             $sql="SELECT DISTINCT p.preg_desc AS preg,c.curso_nombre AS cur,c.curso_profesor AS prof,c.curso_fecha AS fecha, COUNT(e.preg_nro) AS cant
             FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) JOIN encuesta e ON (c.curso_cod=e.curso_cod)
-            WHERE p.preg_nro= e.preg_nro GROUP BY e.preg_nro".$filtro;
+            WHERE p.preg_nro= e.preg_nro $filtro GROUP BY e.preg_nro $orden";
 
             $registros=$base->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
