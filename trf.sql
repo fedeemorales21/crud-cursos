@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-11-2018 a las 03:41:29
+-- Tiempo de generación: 29-11-2018 a las 19:43:36
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -41,8 +41,9 @@ CREATE TABLE `cursos` (
 --
 
 INSERT INTO `cursos` (`curso_cod`, `curso_nombre`, `curso_profesor`, `curso_desc`, `curso_fecha`) VALUES
-(2, 'JS', 'Federico Morales', 'En este curso aprenderás a. Programar con JavaScript; Comprender la arquitectura básica de un programa. Trabajar con eventos. Armar funciones.', '2019-05-01'),
-(3, 'CSS', 'Federico Morales', 'En este curso aprenderemos gratis a maquetar sitios Web con HTML5 y a brindar estilos con CSS. No necesitas conocimientos previos, pues empezaremos', '2019-04-25');
+(2, 'JS', 'fede moral', 'En este curso aprenderás a. Programar con JavaScript; Comprender la arquitectura básica de un programa. Trabajar con eventos. Armar funciones.', '2019-04-23'),
+(3, 'CSS', 'fede moral', 'En este curso aprenderemos gratis a maquetar sitios Web con HTML5 y a brindar estilos con CSS. No necesitas conocimientos previos, pues empezaremos', '2019-04-25'),
+(7, 'adccc', 'liz lisa', 'aaaaaaaaaaaaaaa', '2018-11-14');
 
 -- --------------------------------------------------------
 
@@ -55,6 +56,18 @@ CREATE TABLE `curso_alumno` (
   `alumno_nro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `curso_alumno`
+--
+
+INSERT INTO `curso_alumno` (`curso_nro`, `alumno_nro`) VALUES
+(2, 8),
+(3, 8),
+(7, 8),
+(2, 10),
+(3, 10),
+(2, 13);
+
 -- --------------------------------------------------------
 
 --
@@ -65,9 +78,23 @@ CREATE TABLE `encuesta` (
   `curso_cod` int(11) NOT NULL,
   `alumno_nro` int(11) NOT NULL,
   `preg_nro` int(11) NOT NULL,
-  `rta` varchar(20) NOT NULL,
-  `Id_observacion` int(11) NOT NULL
+  `rta` varchar(20) DEFAULT NULL,
+  `observacion` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `encuesta`
+--
+
+INSERT INTO `encuesta` (`curso_cod`, `alumno_nro`, `preg_nro`, `rta`, `observacion`) VALUES
+(2, 8, 3, '3', NULL),
+(2, 8, 19, '3', NULL),
+(2, 8, 20, NULL, 'qq'),
+(2, 13, 3, '1', NULL),
+(2, 13, 19, '5', NULL),
+(2, 13, 20, NULL, 'eeeeeee'),
+(3, 8, 5, '2', NULL),
+(3, 8, 22, '3', NULL);
 
 -- --------------------------------------------------------
 
@@ -79,6 +106,13 @@ CREATE TABLE `encuesta_obs` (
   `Id_observacion` int(11) NOT NULL,
   `observacion` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `encuesta_obs`
+--
+
+INSERT INTO `encuesta_obs` (`Id_observacion`, `observacion`) VALUES
+(2, 'sad');
 
 -- --------------------------------------------------------
 
@@ -103,7 +137,10 @@ CREATE TABLE `personas` (
 
 INSERT INTO `personas` (`cod_persona`, `nombre`, `apellido`, `dni`, `telefono`, `email`, `pass`, `tipo`) VALUES
 (5, 'fede', 'moral', 123, 44444444, 'f@hotmail.com', '$2y$10$IXDAndz.QYpBIjrg2h9FDO.8d7/BVo9wWubVkW2XfkZXtnzLtcO.i', 'p'),
-(6, 'liz', 'lisa', 111, 111, 'liz@hotmail.com', '$2y$10$za9LB9pHVdzOvJAokEAE7.ym08HZXpaM.x2jKWyVms6C2Ztfv.JrC', 'a');
+(6, 'liz', 'lisa', 111, 111, 'liz@hotmail.com', '$2y$10$za9LB9pHVdzOvJAokEAE7.ym08HZXpaM.x2jKWyVms6C2Ztfv.JrC', 'a'),
+(8, 'Loberto', 'Abielto', 123, 123, 'yo@gmail.com', '$2y$10$dkZqH2bEQod2u1BpN1rtCeoHoxT/TiRr5uGdZCGW9InoYK4twhf5K', 'g'),
+(10, 'fdfdsfsd', 'fsddsfsd', 1233, 44444444, 'ffff@hotmail.com', '$2y$10$uPMmratXRC8mAemUg/HeDOPpJLv1HfbpwdO/G0x0qDmWwr9/3686O', 'g'),
+(13, 'rodolfo', 'depa', 123456789, 111111111, 'rododepa@hotmail.com', '$2y$10$Jr2nIVwXlsbUuvjJ5oV5LuR1h/2qPJqXwnvfTOfFMRMaUu/fIINwC', 'p');
 
 -- --------------------------------------------------------
 
@@ -124,8 +161,11 @@ CREATE TABLE `preguntas` (
 
 INSERT INTO `preguntas` (`preg_nro`, `preg_desc`, `preg_tipo`, `curso_cod`) VALUES
 (3, '¿mando cualquier cosa?', 'opciones', 2),
-(4, '¿que onda?', 'opciones', 2),
-(5, '¿que onda?', 'opciones', 2);
+(5, '¿que onda?', 'opciones', 3),
+(19, 'aaaaaaaaaaaaaaa', 'opciones', 2),
+(20, 'sdssd', 'texto', 2),
+(22, 'sdadddsddddd', 'opciones', 3),
+(23, 'asd', 'opciones', 7);
 
 -- --------------------------------------------------------
 
@@ -137,6 +177,17 @@ CREATE TABLE `tipo_pregunta` (
   `tipopreg_cod` int(11) NOT NULL,
   `tipopreg_desc` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tipo_pregunta`
+--
+
+INSERT INTO `tipo_pregunta` (`tipopreg_cod`, `tipopreg_desc`) VALUES
+(1, 'Excelente'),
+(2, 'Muy bueno'),
+(3, 'Bien'),
+(4, 'Regular'),
+(5, 'Malo');
 
 --
 -- Índices para tablas volcadas
@@ -160,8 +211,7 @@ ALTER TABLE `curso_alumno`
 --
 ALTER TABLE `encuesta`
   ADD KEY `curso_cod` (`curso_cod`),
-  ADD KEY `preg_nro` (`preg_nro`),
-  ADD KEY `encuesta_obs` (`Id_observacion`) USING BTREE;
+  ADD KEY `preg_nro` (`preg_nro`);
 
 --
 -- Indices de la tabla `encuesta_obs`
@@ -196,31 +246,31 @@ ALTER TABLE `tipo_pregunta`
 -- AUTO_INCREMENT de la tabla `cursos`
 --
 ALTER TABLE `cursos`
-  MODIFY `curso_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `curso_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `encuesta_obs`
 --
 ALTER TABLE `encuesta_obs`
-  MODIFY `Id_observacion` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `Id_observacion` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `preg_nro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `preg_nro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_pregunta`
 --
 ALTER TABLE `tipo_pregunta`
-  MODIFY `tipopreg_cod` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `tipopreg_cod` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
@@ -237,7 +287,6 @@ ALTER TABLE `curso_alumno`
 -- Filtros para la tabla `encuesta`
 --
 ALTER TABLE `encuesta`
-  ADD CONSTRAINT `FK_encuesta_obs` FOREIGN KEY (`Id_observacion`) REFERENCES `encuesta_obs` (`Id_observacion`),
   ADD CONSTRAINT `encuesta_ibfk_1` FOREIGN KEY (`curso_cod`) REFERENCES `cursos` (`curso_cod`),
   ADD CONSTRAINT `encuesta_ibfk_2` FOREIGN KEY (`preg_nro`) REFERENCES `preguntas` (`preg_nro`);
 
