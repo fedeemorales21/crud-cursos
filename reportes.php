@@ -3,6 +3,7 @@
 
 <head>
   <!--Import Google Icon Font-->
+  <title>Reportes</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
   <!--Import materialize.css-->
@@ -74,7 +75,7 @@
                         </label>
                     </p>
                 </div>
-                      <p><button class="btn waves-effect waves-light green center section btn-small" type="submit" name="filt">
+                      <p><button class="btn waves-effect waves-light green center section btn-small btn_f" type="submit" name="filt">
                             <i class="material-icons ">send</i>
                         </button></p>
             </div>
@@ -123,7 +124,6 @@
           <tr>
               <th>Pregunta</th>
               <th>Curso</th>
-
               <th>Profesor</th>
               <th>Fecha</th>
               <th>Cantidad de Respuestas</th>
@@ -174,7 +174,7 @@
             <i class="fas fa-print"></i>
         </a>
         <ul>
-            <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Exel" onclick="reporteExcel();">
+            <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Excel" onclick="reporteExcel();">
             <i class="fas fa-file-csv"></i></a></li>
             <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="PDF" href="javascript:window.print();"><i class="far fa-file-pdf"></i></a></li>
         </ul>

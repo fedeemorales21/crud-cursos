@@ -8,7 +8,6 @@ main {
     flex: 1 0 auto;
 }
 
-
 .redes i{ 
     font-size: 30px;
     margin: 10px 15px;
@@ -103,4 +102,8 @@ i.fab.fa-studiovinari.fa-2x {
 #enbabezado,#filtros,#imp,#footer{display: none;}
 
 
+}
+
+i.fas.fa-exclamation-circle.fa-2x {
+    color: #E8CA90;
 }

@@ -11,6 +11,7 @@
 
         <head>
              <!--Import Google Icon Font-->
+                <title>Login</title>
                 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
                 <!--Import materialize.css-->
