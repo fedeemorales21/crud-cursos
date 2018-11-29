@@ -1,7 +1,7 @@
 <?php
     function footer(){
         $pie='
-        <footer class="page-footer indigo section">
+        <footer class="page-footer indigo section" id="footer">
           <div class="container">
             <div class="row">
               

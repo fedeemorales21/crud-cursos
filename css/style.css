@@ -23,3 +23,84 @@ a.white-text.section.contacto {
 i.fab.fa-studiovinari.fa-2x {
     font-size: 1.5em;
 }
+
+@media print{
+    .section {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .center, .center-align {
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 4.2rem;
+        line-height: 110%;
+        margin: 2.8rem 0 1.68rem 0;
+        font-weight: 400;
+        display: block;
+        margin-block-start: 0.67em;
+        margin-block-end: 0.67em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+
+    html {
+        font-size: 14.5px;
+        display: block;
+    }
+
+    table {
+        width: 100%;
+        display: table;
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    table, th, td {
+        border: none;
+    }
+
+    thead {
+        display: table-header-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+    tr {
+        border-bottom: 1px solid rgba(0,0,0,0.12);
+        display: table-row;
+        vertical-align: inherit;
+        border-color: inherit;
+    }
+
+    table.centered thead tr th, table.centered tbody tr td {
+        text-align: center;
+    }
+
+    td, th {
+        padding: 15px 5px;
+        display: table-cell;
+        
+        vertical-align: middle;
+        border-radius: 2px;
+    }
+    table, th, td {
+        border: none;
+    }
+
+    th {
+        font-weight: bold;
+    }
+
+    tbody {
+        display: table-row-group;
+        vertical-align: middle;
+        border-color: inherit;
+    }
+
+#enbabezado,#filtros,#imp,#footer{display: none;}
+
+
+}

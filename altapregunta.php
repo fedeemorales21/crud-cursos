@@ -47,6 +47,8 @@
     <h1 class="center-align">Preguntas</h1>
        <?php
        include 'conexion.php';
+       ?>
+       <?php
        $registros = $base->query("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod")->fetchAll(PDO::FETCH_OBJ);
        ?>
        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
