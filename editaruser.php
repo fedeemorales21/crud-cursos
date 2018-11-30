@@ -32,17 +32,21 @@
     $mail=$_GET['mail'];
     $tipo=$_GET['tipo'];
   }else {
-    $id=$_POST['id'];
-    $nom=$_POST['nom'];
-    $ape=$_POST['ape'];
-    $dni=$_POST['dni'];
-    $tel=$_POST['tel'];
-    $mail=$_POST['mail'];
-    $tipo=$_POST['tipo'];
-    $sql="UPDATE personas SET nombre=:nom,apellido=:ape,dni=:dni,telefono=:tel,email=:mail,tipo=:tipo WHERE cod_persona=:id";
-    $resultado = $base->prepare($sql);
-    $resultado->execute(array(":id"=>$id,":nom"=>$nom,":ape"=>$ape,":dni"=>$dni,":tel"=>$tel,":mail"=>$mail,":tipo"=>$tipo));
-    header("Location:adm_usuarios.php");
+    $err=0;
+    $id=( isset($_POST['id']) && !empty($_POST['id']) )? htmlentities(addslashes($_POST["id"])):$err++;
+    $nom=( isset($_POST['nom']) && !empty($_POST['nom']) )? htmlentities(addslashes($_POST["nom"])):$err++;
+    $ape=( isset($_POST['ape']) && !empty($_POST['ape']) )? htmlentities(addslashes($_POST["ape"])):$err++;
+    $dni=( isset($_POST['dni']) && !empty($_POST['dni']) )? htmlentities(addslashes($_POST["dni"])):$err++;
+    $tel=( isset($_POST['tel']) && !empty($_POST['tel']) )? htmlentities(addslashes($_POST["tel"])):$err++;
+    $mail=( isset($_POST['mail']) && !empty($_POST['mail']) )? htmlentities(addslashes($_POST["mail"])):$err++;
+    $tipo=( isset($_POST['tipo']) && !empty($_POST['tipo']) )? htmlentities(addslashes($_POST["tipo"])):$err++;
+
+    if ($err==0) {
+      $sql="UPDATE personas SET nombre=:nom,apellido=:ape,dni=:dni,telefono=:tel,email=:mail,tipo=:tipo WHERE cod_persona=:id";
+      $resultado = $base->prepare($sql);
+      $resultado->execute(array(":id"=>$id,":nom"=>$nom,":ape"=>$ape,":dni"=>$dni,":tel"=>$tel,":mail"=>$mail,":tipo"=>$tipo));
+      header("Location:adm_usuarios.php");
+    }
   }
 
   if (isset($_POST["btn_can"])){

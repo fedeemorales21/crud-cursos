@@ -70,18 +70,22 @@
     
     <?php
         if(isset($_POST['btn_con'])){
-            $texto=$_POST["comentarios"];
-            $emisor=$_POST["email"];
-            $asunto=$_POST["asunto"];
-            $nombre=$_POST["nombre"];
+            $err=0;
+            $texto=( isset($_POST['comentarios']) && !empty($_POST['comentarios']) )? htmlentities(addslashes($_POST["comentarios"])):$err++;
+            $emisor=( isset($_POST['email']) && !empty($_POST['email']) )? htmlentities(addslashes($_POST["email"])):$err++;
+            $asunto=( isset($_POST['asunto']) && !empty($_POST['asunto']) )? htmlentities(addslashes($_POST["asunto"])):$err++;
+            $nombre=( isset($_POST['nombre']) && !empty($_POST['nombre']) )? htmlentities(addslashes($_POST["nombre"])):$err++;
             $destinatario='federicomorales@gmail.com';
 
-            $exito = email($destinatario,$asunto,$texto,$header); 
-
-            if ($exito) {
-                echo "<p>Mensaje enviado</p>";
-            }else {
-                echo "<p>Mensaje NO enviado</p>";
+            if ($err==0) {
+                
+                $exito = email($destinatario,$asunto,$texto,$header); 
+    
+                if ($exito) {
+                    echo "<p>Mensaje enviado</p>";
+                }else {
+                    echo "<p>Mensaje NO enviado</p>";
+                }
             }
         }
         ?>

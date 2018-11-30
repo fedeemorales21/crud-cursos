@@ -35,14 +35,17 @@
     
     $prof=$_SESSION["nombre"];
     if (isset($_POST['btn_cur'])) {
-        $nombre=$_POST["nom"];
-        $desc=$_POST["desc"];
-        $fecha=$_POST["fecha"];
+        $err=0;
+        $nombre=( isset($_POST['nom']) && !empty($_POST['nom']) )? htmlentities(addslashes($_POST["nom"])):$err++;
+        $desc=( isset($_POST['desc']) && !empty($_POST['desc']) )? htmlentities(addslashes($_POST["desc"])):$err++;
+        $fecha=( isset($_POST['fecha']) && !empty($_POST['fecha']) )? htmlentities(addslashes($_POST["fecha"])):$err++;
 
-        $sql="INSERT INTO cursos (curso_nombre,curso_profesor,curso_desc,curso_fecha) VALUES(:nom,:prof,:descr,:fecha)";
-        $resultado= $base->prepare($sql);
-        $resultado->execute(array(":nom"=>$nombre,":prof"=>$prof,":descr"=>$desc,":fecha"=> $fecha));
-        header("Location:altacurso.php");
+        if ($err==0) {
+            $sql="INSERT INTO cursos (curso_nombre,curso_profesor,curso_desc,curso_fecha) VALUES(:nom,:prof,:descr,:fecha)";
+            $resultado= $base->prepare($sql);
+            $resultado->execute(array(":nom"=>$nombre,":prof"=>$prof,":descr"=>$desc,":fecha"=> $fecha));
+            header("Location:altacurso.php");
+        }
     }
     ?>
     <main>

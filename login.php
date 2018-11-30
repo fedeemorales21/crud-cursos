@@ -2,9 +2,9 @@
     // if(!isset($_SESSION)) { 
     //     session_start();
     //     if ($_SESSION['nombre']!='') {
-    //         header("location:index.php");
+    //             header("location:index.php");
     //     }
-    // }    
+    // }     
 ?>
   <!DOCTYPE html>
   <html>

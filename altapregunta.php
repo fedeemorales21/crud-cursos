@@ -32,14 +32,18 @@
 
 <?php
     if (isset($_POST['btn_preg'])) {
-      $preg_desc = $_POST['desc'] ;
-      $preg_tipo =  $_POST['tipo'] ;
-      $preg_curso =  $_POST['curso'] ;
+      $err=0;
+      $preg_desc = ( isset($_POST['desc']) && !empty($_POST['desc']) )? htmlentities(addslashes($_POST["desc"])):$err++;
+      $preg_tipo =  ( isset($_POST['tipo']) && !empty($_POST['tipo']) )? htmlentities(addslashes($_POST["tipo"])):$err++;
+      $preg_curso =  ( isset($_POST['curso']) && !empty($_POST['curso']) )? htmlentities(addslashes($_POST["curso"])):$err++;
 
-      $sql="INSERT INTO preguntas (preg_desc,preg_tipo,curso_cod) VALUES(:descr,:tipo,:curso)";
-      $resultado= $base->prepare($sql);
-      $resultado->execute(array(":descr"=>$preg_desc,":tipo"=>$preg_tipo,":curso"=>$preg_curso));
-      header("Location:altapregunta.php");
+      if ($err==0) {
+        
+        $sql="INSERT INTO preguntas (preg_desc,preg_tipo,curso_cod) VALUES(:descr,:tipo,:curso)";
+        $resultado= $base->prepare($sql);
+        $resultado->execute(array(":descr"=>$preg_desc,":tipo"=>$preg_tipo,":curso"=>$preg_curso));
+        header("Location:altapregunta.php");
+      }
     }
       
 ?>

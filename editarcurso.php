@@ -30,15 +30,19 @@
     $desc=$_GET['desc'];
     $fec=$_GET['fec'];
   }else {
-    $id=$_POST['id'];
-    $nom=$_POST['nom'];
-    $prof=$_POST['prof'];
-    $desc=$_POST['desc'];
-    $fec=$_POST['fec'];
-    $sql="UPDATE cursos SET curso_nombre=:nom,curso_profesor=:prof,curso_desc=:descr,curso_fecha=:fec WHERE curso_cod=:id";
-    $resultado = $base->prepare($sql);
-    $resultado->execute(array(":id"=>$id,":nom"=>$nom,":prof"=>$prof,":descr"=>$desc,":fec"=>$fec));
-    header("Location:altacurso.php");
+    $err=0;
+    $id=( isset($_POST['id']) && !empty($_POST['id']) )? htmlentities(addslashes($_POST["id"])):$err++;
+    $nom=( isset($_POST['nom']) && !empty($_POST['nom']) )? htmlentities(addslashes($_POST["nom"])):$err++;
+    $prof=( isset($_POST['prof']) && !empty($_POST['prof']) )? htmlentities(addslashes($_POST["prof"])):$err++;
+    $desc=( isset($_POST['desc']) && !empty($_POST['desc']) )? htmlentities(addslashes($_POST["desc"])):$err++;
+    $fec=( isset($_POST['fec']) && !empty($_POST['fec']) )? htmlentities(addslashes($_POST["fec"])):$err++;
+    
+    if ($err==0) {
+      $sql="UPDATE cursos SET curso_nombre=:nom,curso_profesor=:prof,curso_desc=:descr,curso_fecha=:fec WHERE curso_cod=:id";
+      $resultado = $base->prepare($sql);
+      $resultado->execute(array(":id"=>$id,":nom"=>$nom,":prof"=>$prof,":descr"=>$desc,":fec"=>$fec));
+      header("Location:altacurso.php");
+    }
   }
 
   if (isset($_POST["btn_can"])){

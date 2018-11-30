@@ -128,30 +128,12 @@
               <th>Profesor</th>
               <th>Fecha</th>
               <th>Cantidad de Respuestas</th>
-              <!-- <th>Excelente</th>
-              <th>Muy Bueno</th>
-              <th>Bueno</th>
-              <th>Regular</th>             
-              <th>Malo</th> -->
+              
           </tr>
         </thead>
 
         <tbody>
-        <?php
-            
-            
-
-            // $registros=$base->query("SELECT DISTINCT p.preg_desc AS preg,c.curso_nombre AS cur, e.rta resp, e.observacion obs
-            // FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
-            // JOIN encuesta e ON (c.curso_cod=e.curso_cod AND p.preg_nro= e.preg_nro)
-            // LEFT JOIN tipo_pregunta tp ON (e.rta = tp.tipopreg_cod) WHERE e.rta IS NOT NULL")->fetchAll(PDO::FETCH_OBJ);
-
-            // $ex = 0;
-            // $mb = 0;
-            // $bn = 0;
-            // $re = 0;
-            // $ma = 0;
-        ?>
+        
             <?php foreach ($registros as $res) : ?>
                 <tr>
                     <td><?= $res->preg?></td>
@@ -159,12 +141,6 @@
                     <td><?= $res->prof ?></td>
                     <td><?= $res->fecha ?></td>
                     <td><?= $res->cant ?></td>
-           
-                    <!-- <td><?php //if($res->resp == '1') {$ex++;} echo $ex; ?></td>
-                    <td><?php //if($res->resp == '2') {$mb++;} echo $mb; ?></td>
-                    <td><?php //if($res->resp == '3') {$bn++;} echo $bn; ?></td>
-                    <td><?php //if($res->resp == '4') {$re++;} echo $re; ?></td>
-                    <td><?php //if($res->resp == '5') {$ma++;} echo $ma; ?></td> -->
                 </tr>
             <?php endforeach?>
         </tbody>

@@ -29,14 +29,18 @@
     $tipo=$_GET['tipo'];
     $cur=$_GET['cur'];
   }else {
-    $id=$_POST['id'];
-    $desc=$_POST['desc'];
-    $tipo=$_POST['tipo'];
-    $cur=$_POST['cur'];
-    $sql="UPDATE preguntas SET preg_desc=:descr,preg_tipo=:tipo,curso_cod=:cur WHERE preg_nro=:id";
-    $resultado = $base->prepare($sql);
-    $resultado->execute(array(":id"=>$id,":descr"=>$desc,":tipo"=>$tipo,":cur"=>$cur));
-    header("Location:altapregunta.php");
+    $err=0;
+    $id=( isset($_POST['id']) && !empty($_POST['id']) )? htmlentities(addslashes($_POST["id"])):$err++;
+    $desc=( isset($_POST['desc']) && !empty($_POST['desc']) )? htmlentities(addslashes($_POST["desc"])):$err++;
+    $tipo=( isset($_POST['tipo']) && !empty($_POST['tipo']) )? htmlentities(addslashes($_POST["tipo"])):$err++;
+    $cur=( isset($_POST['cur']) && !empty($_POST['cur']) )? htmlentities(addslashes($_POST["cur"])):$err++;
+
+    if ($err==0) {
+      $sql="UPDATE preguntas SET preg_desc=:descr,preg_tipo=:tipo,curso_cod=:cur WHERE preg_nro=:id";
+      $resultado = $base->prepare($sql);
+      $resultado->execute(array(":id"=>$id,":descr"=>$desc,":tipo"=>$tipo,":cur"=>$cur));
+      header("Location:altapregunta.php");
+    }
   }
 
   

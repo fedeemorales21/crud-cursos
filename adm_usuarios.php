@@ -35,18 +35,21 @@
     $registros = $base->query("SELECT * FROM personas")->fetchAll(PDO::FETCH_OBJ);
     
     if (isset($_POST['btn_per'])) {
-        $nombre=$_POST["nom"];
-        $apellido=$_POST["ape"];
-        $dni=$_POST["dni"];
-        $tel=$_POST["tel"];
-        $email=$_POST["email"];
+        $err=0;
+        $nombre=( isset($_POST['nom']) && !empty($_POST['nom']) )? htmlentities(addslashes($_POST["nom"])):$err++;
+        $apellido=( isset($_POST['ape']) && !empty($_POST['ape']) )? htmlentities(addslashes($_POST["ape"])):$err++;
+        $dni=( isset($_POST['dni']) && !empty($_POST['dni']) )? htmlentities(addslashes($_POST["dni"])):$err++;
+        $tel=( isset($_POST['tel']) && !empty($_POST['tel']) )? htmlentities(addslashes($_POST["tel"])):$err++;
+        $email=( isset($_POST['email']) && !empty($_POST['email']) )? htmlentities(addslashes($_POST["email"])):$err++;
         $pass=password_hash($_POST["pass"],PASSWORD_DEFAULT);
-        $tipo=$_POST["tipo"];
+        $tipo=( isset($_POST['tipo']) && !empty($_POST['tipo']) )? htmlentities(addslashes($_POST["tipo"])):$err++;
 
-        $sql="INSERT INTO personas (nombre,apellido,dni,telefono,email,pass,tipo) VALUES(:nom,:ape,:dni,:tel,:email,:pass,:tipo)";
-        $resultado= $base->prepare($sql);
-        $resultado->execute(array(":nom"=>$nombre,":ape"=>$apellido,":dni"=>$dni,":tel"=>$tel,":email"=>$email,":pass"=>$pass,":tipo"=>$tipo));
-        header("Location:adm_usuarios.php");
+        if ($err==0) {
+            $sql="INSERT INTO personas (nombre,apellido,dni,telefono,email,pass,tipo) VALUES(:nom,:ape,:dni,:tel,:email,:pass,:tipo)";
+            $resultado= $base->prepare($sql);
+            $resultado->execute(array(":nom"=>$nombre,":ape"=>$apellido,":dni"=>$dni,":tel"=>$tel,":email"=>$email,":pass"=>$pass,":tipo"=>$tipo));
+            header("Location:adm_usuarios.php");
+        }
     }
     ?>
     <main>

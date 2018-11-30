@@ -33,12 +33,12 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="nombre" type="text" class="validate" name="nombre" required>
+                    <input id="nombre" type="text" class="validate" name="nombre" data-length="25" required>
                     <label for="nombre">Nombre</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="apellido" type="text" class="validate" name="apellido" required>
+                    <input id="apellido" type="text" class="validate" name="apellido" data-length="25" required>
                     <label for="apellido">Apellido</label>
                 </div>
             </div>
@@ -46,12 +46,12 @@
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">assignment_ind</i>
-                    <input id="dni" type="text" class="validate" name="dni" required>
+                    <input id="dni" type="number" class="validate" name="dni" data-length="8" maxlength="8" required>
                     <label for="dni">DNI</label>
                 </div>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">phone</i>
-                    <input id="tel" type="text" class="validate" name="tel" required>
+                    <input id="tel" type="number" class="validate" name="tel" data-length="15" required>
                     <label for="tel">Teléfono</label>
                 </div>
             </div>
@@ -61,6 +61,7 @@
                 <div class="input-field col s6">
                     <i class="material-icons prefix">email</i>
                     <input id="email" type="email" class="validate" name="email" required>
+                    <span class="helper-text" data-error="Incorrecto" data-success="Correcto"></span>
                     <label for="email">Email</label>
                 </div>
                 <div class="input-field col s6">
@@ -89,6 +90,28 @@
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script>
+         M.AutoInit();
+        
+         function validarNombre(){
+            tuEmail = document.formu1.email.value
+            tuEmail = tuEmail.toString()
+            patron = /^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/
+            respuesta = patron.test(tuEmail)
+            alert("resultado: "+respuesta)
+        }
+        
+        function validarEmail(){
+            var mail = document.getElementByName('email').value
+            mail = mail.toString()
+            patron = /^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/
+            respuesta = patron.test(mail)
+            alert("resultado: "+respuesta)
+        }
+   
+    
+    
+    </script>
 </body>
 
 </html>
