@@ -32,7 +32,7 @@
       }
       if (isset($_SESSION['numid'])) {
         $num=$_SESSION['numid'];
-        $registros = $base->query("SELECT * FROM cursos c WHERE (c.curso_cod NOT IN (SELECT DISTINCT(curso_nro) FROM curso_alumno ca JOIN encuesta e ON (ca.curso_nro = e.curso_cod) WHERE e.alumno_nro=$num))")->fetchAll(PDO::FETCH_OBJ);
+        $registros = $base->query("SELECT * FROM cursos c WHERE c.curso_cod NOT IN (SELECT DISTINCT(curso_nro) FROM curso_alumno ca JOIN encuesta e ON (ca.curso_nro = e.curso_cod) WHERE e.alumno_nro=$num) AND c.curso_cod IN (SELECT DISTINCT(curso_cod) FROM curso_alumno ca WHERE ca.alumno_nro = $num)")->fetchAll(PDO::FETCH_OBJ);
         if (!empty($registros)) {
           foreach ($registros as $curso) {
       

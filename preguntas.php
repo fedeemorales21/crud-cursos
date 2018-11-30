@@ -41,43 +41,52 @@
                 $sql="SELECT * FROM preguntas p JOIN cursos c ON (p.curso_cod=c.curso_cod) JOIN curso_alumno a ON (a.curso_nro=c.curso_cod) WHERE c.curso_cod =:cur AND a.alumno_nro=:alu";
                 $resultado=$base->prepare($sql);
                 $resultado->execute(array(":cur"=>$cod,":alu"=>$alu));   
-                
-                
-                if (isset($_POST['btn_res'])) {                                           
-                    $indice = isset($_POST['indice']) && !empty($_POST['indice']) ? $_POST['indice'] : null;
-                    for ($e=0; $e<=$indice; $e++) { 
-                        $c_nro = "c_nro$e";
-                        $a_nro = "a_nro$e";
-                        $p_nro = "p_nro$e";
-                        $rta = "rta$e";
-                        $obs = "obs$e";
-                        $curso_cod = isset($_POST["$c_nro"]) && !empty($_POST["$c_nro"]) ? $_POST["$c_nro"] : null;                   
-                        $alumno_nro = isset($_POST["$a_nro"]) && !empty($_POST["$a_nro"]) ? $_POST["$a_nro"] : null;
-                        $preg_nro = isset($_POST["$p_nro"]) && !empty($_POST["$p_nro"]) ? $_POST["$p_nro"] : null;
-                        $rta = isset($_POST["$rta"]) && !empty($_POST["$rta"]) ? $_POST["$rta"] : null;
-                        $obs = isset($_POST["$obs"]) && !empty($_POST["$obs"]) ? $_POST["$obs"] : null;
-                        
-                        if (is_numeric($rta)) {
-                            $sql="INSERT INTO encuesta (curso_cod,alumno_nro,preg_nro,rta) VALUES(:cc,:an,:pn,:rta)";
-                            $resultado= $base->prepare($sql);
-                            $resultado->execute(array(":cc"=>$curso_cod,":an"=>$alumno_nro,":pn"=>$preg_nro,":rta"=> $rta));
-                    
-                            header("Location:miscursos.php");
-                        }else {
-                            $sql="INSERT INTO encuesta (curso_cod,alumno_nro,preg_nro,observacion) VALUES(:cc,:an,:pn,:obs)";
-                            
-                            $resultado= $base->prepare($sql);
-                            $resultado->execute(array(":cc"=>$curso_cod,":an"=>$alumno_nro,":pn"=>$preg_nro,":obs"=>$obs ));
-                    
-                            header("Location:miscursos.php");
-                        }
 
-                    }
+                if ($resultado->rowCount() == 0) {
+                
+                        echo "<script>
+                                alert('No esta inscripto a ningun curso');
+                                window.location= 'index.php'
+                        </script>";
+                    
                 }
-
+                    if (isset($_POST['btn_res'])) {                                           
+                        $indice = isset($_POST['indice']) && !empty($_POST['indice']) ? $_POST['indice'] : null;
+                        for ($e=0; $e<=$indice; $e++) { 
+                            $c_nro = "c_nro$e";
+                            $a_nro = "a_nro$e";
+                            $p_nro = "p_nro$e";
+                            $rta = "rta$e";
+                            $obs = "obs$e";
+                            $curso_cod = isset($_POST["$c_nro"]) && !empty($_POST["$c_nro"]) ? $_POST["$c_nro"] : null;                   
+                            $alumno_nro = isset($_POST["$a_nro"]) && !empty($_POST["$a_nro"]) ? $_POST["$a_nro"] : null;
+                            $preg_nro = isset($_POST["$p_nro"]) && !empty($_POST["$p_nro"]) ? $_POST["$p_nro"] : null;
+                            $rta = isset($_POST["$rta"]) && !empty($_POST["$rta"]) ? $_POST["$rta"] : null;
+                            $obs = isset($_POST["$obs"]) && !empty($_POST["$obs"]) ? $_POST["$obs"] : null;
+                            
+                            if (is_numeric($rta)) {
+                                $sql="INSERT INTO encuesta (curso_cod,alumno_nro,preg_nro,rta) VALUES(:cc,:an,:pn,:rta)";
+                                $resultado= $base->prepare($sql);
+                                $resultado->execute(array(":cc"=>$curso_cod,":an"=>$alumno_nro,":pn"=>$preg_nro,":rta"=> $rta));
+                        
+                                header("Location:miscursos.php");
+                            }else {
+                                $sql="INSERT INTO encuesta (curso_cod,alumno_nro,preg_nro,observacion) VALUES(:cc,:an,:pn,:obs)";
+                                
+                                $resultado= $base->prepare($sql);
+                                $resultado->execute(array(":cc"=>$curso_cod,":an"=>$alumno_nro,":pn"=>$preg_nro,":obs"=>$obs ));
+                        
+                                header("Location:miscursos.php");
+                            }
+    
+                        }
+                    }
+                
+                
+                               
                 $i=0;
              ?>
-            <h1 class="center section">Preguntas</h1>
+            <h1 class='center section'>Preguntas</h1>
 
             
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">

@@ -180,6 +180,7 @@ function validaUser() {
 document.getElementById('faltac').addEventListener('submit',validaCurso);
 
 document.getElementById('feditc').addEventListener('submit',validaCurso);
+
 function validaCurso() {
     let nombre,desc,fecha,prof;
     nombre = document.getElementsById('nombre').value;
