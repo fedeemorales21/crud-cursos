@@ -58,7 +58,7 @@
        <?php
        $registros = $base->query("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod")->fetchAll(PDO::FETCH_OBJ);
        ?>
-       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
+       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap">
        <table class='highlight centered responsive-table'>
           <thead>
             <tr>
@@ -92,7 +92,7 @@
                 
         <tr>
           <td></td>
-          <td><input type='text' name='desc'></td>
+          <td><input type='text' name='desc' id="desc"></td>
           <td>
             <select name="tipo">
               <option value='' disabled selected>Tipo</option>
@@ -133,9 +133,8 @@
 
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-     M.AutoInit();
-  </script>
+<script type="text/javascript" src="js/script.js"></script>
+
 
 </body>
 </html>

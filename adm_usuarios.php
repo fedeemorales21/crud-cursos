@@ -54,7 +54,7 @@
     ?>
     <main>
     <h1 class="center">Administración de usuarios</h1>
-    <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="fadm_user">
 
     <div class="container">
     <table class="highlight centered responsive-table">
@@ -92,13 +92,13 @@
 
         <tr>
             <td></td>
-            <td><input type='text' name='nom' requied placeholder="Nombre"></td>
-            <td><input type='text' name='ape' requied placeholder="Apellido"></td>
-            <td><input type='text' name='dni' requied placeholder="DNI"></td>
-            <td><input type='text' name='tel' requied placeholder="Teléfono" ></td>
-            <td><input type='text' name='email' requied placeholder="E-mail" ></td>
-            <td><input type='password' name='pass' requied placeholder="Password" ></td>
-            <td><select name="tipo">
+            <td><input type='text' name='nom' id="nombre" requied placeholder="Nombre"></td>
+            <td><input type='text' name='ape' id="apellido" requied placeholder="Apellido"></td>
+            <td><input type='text' name='dni' id="dni" requied placeholder="DNI"></td>
+            <td><input type='text' name='tel' id="tel" requied placeholder="Teléfono" ></td>
+            <td><input type='text' name='email' id="email" requied placeholder="E-mail" ></td>
+            <td><input type='password' name='pass'id="pass" requied placeholder="Password" ></td>
+            <td><select name="tipo" id="tipo">
                     <option value="" disabled selected>Tipo</option>
                     <option value="g">Alumno</option>
                     <option value="p">Profesor</option>
@@ -124,8 +124,6 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-     M.AutoInit();
-  </script>
+  <script type="text/javascript" src="js/script.js"></script>
 </body>
 </html>

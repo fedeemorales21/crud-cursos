@@ -57,7 +57,7 @@
 </p>
 <p>&nbsp;</p>
 <div class="container">
-<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="feditc">
   <table>
     <tr>
       <input type="hidden" name="id" id="id" value="<?php echo $id; ?>"></td>
@@ -65,7 +65,7 @@
     <tr>
       <td class="center">Nombre</td>
       <td><label for="nom"></label>
-      <input type="text" name="nom" id="nom"value="<?php echo $nom; ?>"></td>
+      <input type="text" name="nom" id="nombre"value="<?php echo $nom; ?>"></td>
     </tr>
     
     <tr>
@@ -83,7 +83,7 @@
     <tr>
       <td class="center">Fecha</td>
       <td><label for="fec"></label>
-      <input type="text" class="datepicker" name="fec" id="fec"value="<?php echo $fec; ?>"></td>
+      <input type="text" class="datepicker" name="fec" id="fecha"value="<?php echo $fec; ?>"></td>
     </tr>
 
      <tr>
@@ -108,16 +108,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, {
-            format : "yyyy-mm-dd"
-        });
-     });
+  <script type="text/javascript" src="js/script.js"></script>
 
-
-     M.AutoInit();
-  </script>
 </body>
 </html>

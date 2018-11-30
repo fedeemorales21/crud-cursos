@@ -28,16 +28,16 @@
             <?=$nav?>
             <main class="row container section">
                 <h1 class="center">Log In</h1>
-                <form class="col s12" action="datoslog.php" method="POST">
+                <form class="col s12" action="datoslog.php" method="POST" id="flog">
                 <div class="row">
                         <div class="input-field col s12">
                             <i class="material-icons prefix">email</i>
-                            <input id="email" type="email" class="validate" name="login" required>
+                            <input id="login" type="email" class="validate" name="login" required>
                             <label for="email">Email</label>
                         </div>
                         <div class="input-field col s12">
                             <i class="material-icons prefix">lock</i>
-                            <input id="pass" type="password" class="validate" name="pw" required>
+                            <input id="pw" type="password" class="validate" name="pw" required>
                             <label for="pass">Contraseña</label>
                         </div>
                     </div>
@@ -61,5 +61,7 @@
 
             <!--JavaScript at end of body for optimized loading-->
             <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/script.js"></script>
+
         </body>
    </html>

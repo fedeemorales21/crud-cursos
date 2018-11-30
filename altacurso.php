@@ -50,7 +50,7 @@
     ?>
     <main>
      <h1 class="center">Administración de cursos</h1>
-    <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+    <form  action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="faltac">
 
     <div class="container">
     <table class="highlight centered responsive-table">
@@ -84,10 +84,10 @@
 
         <tr>
             <td></td>
-            <td><input type='text' name='nom' requied ></td>
+            <td><input type='text' id="nombre" name='nom' requied ></td>
             <td><input type='text' value="<?php echo $prof; ?>" disabled></td>
-            <td><input type='text' name='desc' requied></td>
-            <td><input type="text" class="datepicker" name='fecha'></td>
+            <td><input type='text' id="desc" name='desc' requied></td>
+            <td><input type="text" id="fecha" class="datepicker" name='fecha'></td>
             <td>
                 <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_cur">
                     <i class="material-icons">send</i>
@@ -106,16 +106,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-     document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, {
-            format : "yyyy-mm-dd"
-        });
-     });
+  <script type="text/javascript" src="js/script.js"></script>
 
-
-     M.AutoInit();
-  </script>
 </body>
 </html>

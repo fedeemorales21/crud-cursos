@@ -165,34 +165,9 @@
   <?=footer()?>
 
   <!--JavaScript at end of body for optimized loading-->
-  <script type="text/javascript" src="js/materialize.min.js"></script>
-  
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.datepicker');
-        var instances = M.Datepicker.init(elems, {
-            format : "yyyy-mm-dd"
-        });
-     });
-
-     M.AutoInit();
-
-     function reporteExcel(){
-            var texto="<table border='1'><tr>"
-            var tabla = document.getElementById('tabla')
-
-            for(let i = 0 ; i < tabla.rows.length ; i++){     
-                texto+=tabla.rows[i].innerHTML+"</tr>"
-                texto+="</tr>"
-            }
-             
-            render = window.open('data:application/vnd.ms-excel,' + encodeURI(texto))
-
-            return render
-        }
-
-  </script>
-  
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+    
 </body>
 
 </html>

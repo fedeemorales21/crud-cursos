@@ -59,7 +59,7 @@
 
 <p>&nbsp;</p>
 <div class="container">
-<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="fedit_user">
   <table>
     <tr>
       <input type="hidden" name="id" id="id" value="<?php echo $id; ?>"></td>
@@ -68,13 +68,13 @@
       <td class="center">Nombre</td>
       <td>
         <label for="nom"></label>
-        <input type="text" name="nom" id="nom" value="<?php echo $nom; ?>">
+        <input type="text" name="nom" id="nombre" value="<?php echo $nom; ?>">
       </td>
     </tr>
     <tr>
       <td class="center">Apellido</td>
       <td><label for="ape"></label>
-      <input type="text" name="ape" id="ape"value="<?php echo $ape; ?>"></td>
+      <input type="text" name="ape" id="apellido"value="<?php echo $ape; ?>"></td>
     </tr>
     <tr>
       <td class="center">DNI</td>
@@ -89,7 +89,7 @@
     <tr>
       <td class="center">E-mail</td>
       <td><label for="mail"></label>
-      <input type="text" name="mail" id="mail"value="<?php echo $mail; ?>"></td>
+      <input type="text" name="mail" id="email"value="<?php echo $mail; ?>"></td>
     </tr>
     <tr>
       <td class="center">Tipo</td>
@@ -123,8 +123,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-     M.AutoInit();
-  </script>
+  <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>

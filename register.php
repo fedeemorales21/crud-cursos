@@ -29,7 +29,7 @@
     <main>
     <div class="row container section">
         <h1 class="center">Registrarse</h1>
-        <form class="col s12" action="datosreg.php" method="POST">
+        <form class="col s12" action="datosreg.php" method="POST" id="formulario">
             <div class="row">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
@@ -90,28 +90,8 @@
 
     <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script>
-         M.AutoInit();
-        
-         function validarNombre(){
-            tuEmail = document.formu1.email.value
-            tuEmail = tuEmail.toString()
-            patron = /^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/
-            respuesta = patron.test(tuEmail)
-            alert("resultado: "+respuesta)
-        }
-        
-        function validarEmail(){
-            var mail = document.getElementByName('email').value
-            mail = mail.toString()
-            patron = /^[\w]+@{1}[\w]+\.+[a-z]{2,3}$/
-            respuesta = patron.test(mail)
-            alert("resultado: "+respuesta)
-        }
-   
     
-    
-    </script>
+    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>

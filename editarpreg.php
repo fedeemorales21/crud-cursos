@@ -56,7 +56,7 @@
 </p>
 <p>&nbsp;</p>
 <div class="container">
-<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+<form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="feditp">
   <table>
     <tr>
       <input type="hidden" name="id" id="id" value="<?php echo $id; ?>"></td>
@@ -64,13 +64,13 @@
     <tr>
       <td class="center">Descripción</td>
       <td><label for="desc"></label>
-      <input type="text" name="desc" id="desc"value="<?php echo $desc; ?>"></td>
+      <input type="text" name="desc" id="desc" value="<?php echo $desc; ?>"></td>
     </tr>
     
     <tr>
       <td class="center">Tipo</td>
       <td><label for="tipo"></label>
-        <select name="tipo">
+        <select name="tipo" id="tipo">
           <option value='opciones' <?php if($tipo=='opciones'){echo "selected";}?>>Opciones</option>
           <option value='texto' <?php if($tipo=='texto'){echo "selected";}?>>Texto</option>
          </select>
@@ -79,9 +79,9 @@
 
     <tr>
       <td class="center">Curso</td>
-      <td><label for="cur"></label>
+      <td><label for="curso"></label>
       
-      <select name="cur">
+      <select name="cur" id="curso">
         <?php
           $opc='';
           $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
@@ -122,8 +122,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script>
-     M.AutoInit();
-  </script>
+  <script type="text/javascript" src="js/script.js"></script>
+
 </body>
 </html>
