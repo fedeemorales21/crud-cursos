@@ -13,6 +13,10 @@ main {
     margin: 10px 15px;
 }
 
+svg .svg-inline--fa.fa-studiovinari.fa-w-16.fa-2x {
+    font-size: 1.5em;
+}
+
 a.white-text.section.contacto {
     padding:0 25px ;
     font-size: 20px;

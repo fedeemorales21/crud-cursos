@@ -4,11 +4,10 @@
 <head>
   <!--Import Google Icon Font-->
   <title>Reportes</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="css/style.css">
+  <script src="js/all.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!--Let browser know website is optimized for mobile-->
@@ -77,7 +76,7 @@
                     </p>
                 </div>
                       <p><button class="btn waves-effect waves-light green center section btn-small btn_f" type="submit" name="filt">
-                            <i class="material-icons ">send</i>
+                        <i class="fas fa-search material-icons"></i>
                         </button></p>
             </div>
          
@@ -148,12 +147,12 @@
     <div id="imp">
       <div class="fixed-action-btn">
             <a class="btn-floating btn-large red">
-            <i class="fas fa-print"></i>
+            <i class="fas fa-print fa-lg"></i>
         </a>
         <ul>
             <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Excel" onclick="reporteExcel();">
-            <i class="fas fa-file-csv"></i></a></li>
-            <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="PDF" href="javascript:window.print();"><i class="far fa-file-pdf"></i></a></li>
+            <i class="fas fa-file-csv fa-lg"></i></a></li>
+            <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="PDF" href="javascript:window.print();"><i class="fa-lg far fa-file-pdf"></i></a></li>
         </ul>
     </div>
     </div>

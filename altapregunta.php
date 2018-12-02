@@ -12,11 +12,10 @@
 <head>
   <!--Import Google Icon Font-->
   <title>Agregar Pregunta</title>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  <script src="js/all.js"></script>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="css/style.css">
+  
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!--Let browser know website is optimized for mobile-->
@@ -78,11 +77,11 @@
             <td>
               <a data-position='left' data-tooltip='Borrar' class='white-text red waves-effect waves-light btn tooltipped'
                href='borrarpreg.php?id=<?php echo $preguntas->preg_nro;?>'>
-               <i class='material-icons'>delete</i></a></td>
+               <i class="fas fa-trash-alt material-icons"></i></a></td>
                <td>
                <a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped"
                 href="editarpreg.php?id=<?php echo $preguntas->preg_nro;?>&desc=<?php echo  $preguntas->preg_desc; ?>&tipo=<?php echo $preguntas->preg_tipo; ?>&cur=<?php echo $preguntas->curso_cod; ?>"
-                ><i class="material-icons ">edit</i></a>
+                ><i class="fas fa-edit material-icons"></i></a>
             </td>
    
 
@@ -119,7 +118,7 @@
 
           <td>
             <button data-position='right' data-tooltip='Agregar' class='green btn waves-effect waves-light tooltipped' type='submit' name='btn_preg'>
-              <i class='material-icons'>send</i>
+              <i class="far fa-share-square material-icons"></i>
             </button></td>
         </tr>
       </tbody>

@@ -12,12 +12,12 @@
         <meta charset="utf-8">
         <title>Administrar Usuarios</title>
         <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        
+        <script defer src="js/all.js"></script> 
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/style.css">
+        
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -84,8 +84,8 @@
                 <td><?php echo $usuario->email; ?></td>
                 <td><?php if($usuario->tipo == 'g'){echo "Alumno";}elseif($usuario->tipo == 'p'){echo "Profesor";}elseif($usuario->tipo == 'a'){echo "Administrador";} ?></td>
 
-                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borraruser.php?id=<?php echo $usuario->cod_persona;?>"><i class="material-icons ">delete</i></a></td>
-                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editaruser.php?id=<?php echo $usuario->cod_persona; ?>&nom=<?php echo  $usuario->nombre; ?>&ape=<?php echo $usuario->apellido; ?>&dni=<?php echo $usuario->dni; ?>&tel=<?php echo $usuario->telefono; ?>&mail=<?php echo $usuario->email; ?>&tipo=<?php echo $usuario->tipo; ?>"><i class="material-icons ">edit</i></a></td>
+                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borraruser.php?id=<?php echo $usuario->cod_persona;?>"><i class="fas fa-trash-alt material-icons"></i></a></td>
+                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editaruser.php?id=<?php echo $usuario->cod_persona; ?>&nom=<?php echo  $usuario->nombre; ?>&ape=<?php echo $usuario->apellido; ?>&dni=<?php echo $usuario->dni; ?>&tel=<?php echo $usuario->telefono; ?>&mail=<?php echo $usuario->email; ?>&tipo=<?php echo $usuario->tipo; ?>"><i class="fas fa-edit material-icons"></i></a></td>
             </tr>
         <?php endforeach; ?>
 
@@ -108,7 +108,7 @@
            
             <td>
                 <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_per">
-                    <i class="material-icons">send</i>
+                <i class="far fa-share-square material-icons"></i>
                 </button>
             </td>
         </tr>

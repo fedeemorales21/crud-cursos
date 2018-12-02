@@ -12,11 +12,10 @@
         <head>
              <!--Import Google Icon Font-->
                 <title>Login</title>
-                <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-                <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+              
                 <!--Import materialize.css-->
                 <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-                <link rel="stylesheet" href="css/style.css">
+                <script src="js/all.js"></script>
                 <link rel="stylesheet" href="css/style.css">
                 <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
                 <!--Let browser know website is optimized for mobile-->
@@ -31,12 +30,12 @@
                 <form class="col s12" action="datoslog.php" method="POST" id="flog">
                 <div class="row">
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">email</i>
+                            <i class="material-icons prefix fas fa-at"></i>
                             <input id="login" type="email" class="validate" name="login" required>
                             <label for="email">Email</label>
                         </div>
                         <div class="input-field col s12">
-                            <i class="material-icons prefix">lock</i>
+                            <i class="material-icons prefix fas fa-key"></i>
                             <input id="pw" type="password" class="validate" name="pw" required>
                             <label for="pass">Contraseña</label>
                         </div>
@@ -45,11 +44,11 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <a class="btn waves-effect waves-light left" href="index.php">
-                                <i class="material-icons left">undo</i>
+                                 <i class="fas fa-chevron-left"></i>
                                 Volver
                             </a>
                             <button class="btn waves-effect waves-light right" type="submit" name="enviar">Entrar
-                                <i class="material-icons right">redo</i>
+                                <i class="fas fa-sign-out-alt"></i>
                             </button>
                         </div>
                     </div>

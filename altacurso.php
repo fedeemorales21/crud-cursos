@@ -11,13 +11,12 @@
     <head>
         <meta charset="utf-8">
         <title>Registrar cursos</title>
-        <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        
+        <script src="js/all.js"></script>
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
         <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/style.css">
+        
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <!--Let browser know website is optimized for mobile-->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -76,8 +75,8 @@
                 <td><?php echo $cursos->curso_desc; ?></td>
                 <td><?php echo $cursos->curso_fecha; ?></td>
 
-                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borrarcurso.php?id=<?php echo $cursos->curso_cod;?>"><i class="material-icons ">delete</i></a></td>
-                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $cursos->curso_nombre; ?>&prof=<?php echo $cursos->curso_profesor; ?>&desc=<?php echo $cursos->curso_desc; ?>&fec=<?php echo $cursos->curso_fecha;?>"><i class="material-icons ">edit</i></a></td>
+                <td><a data-position="left" data-tooltip="Borrar" class="white-text red waves-effect waves-light btn tooltipped" href="borrarcurso.php?id=<?php echo $cursos->curso_cod;?>"><i class="fas fa-trash-alt material-icons"></i></a></td>
+                <td><a data-position="right" data-tooltip="Editar" class="white-text yellow darken-4 waves-effect waves-light btn tooltipped" href="editarcurso.php?id=<?php echo $cursos->curso_cod; ?>&nom=<?php echo $cursos->curso_nombre; ?>&prof=<?php echo $cursos->curso_profesor; ?>&desc=<?php echo $cursos->curso_desc; ?>&fec=<?php echo $cursos->curso_fecha;?>"><i class="fas fa-edit material-icons"></i></a></td>
             </tr>
         <?php endforeach; ?>
 
@@ -90,7 +89,7 @@
             <td><input type="text" id="fecha" class="datepicker" name='fecha'></td>
             <td>
                 <button data-position="right" data-tooltip="Agregar" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_cur">
-                    <i class="material-icons">send</i>
+                    <i class="far fa-share-square material-icons"></i>
                 </button>
             </td>
         </tr>

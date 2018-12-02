@@ -3,11 +3,10 @@
 <head>
 <meta charset="utf-8">
 <title>Editar Usuario</title>
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="css/style.css">
+  <script src="js/all.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!--Let browser know website is optimized for mobile-->
@@ -104,12 +103,12 @@
      <tr>
         <td>
         <button data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
-            <i class="material-icons">close</i>
+          <i class="fas fa-times material-icons prefix"></i>
           </button>
         </td>
       <td class="right">
            <button data-position="right" data-tooltip="Guardar cambios" class="green btn waves-effect waves-light tooltipped" type="submit" name="btn_act">
-                <i class="material-icons">save</i>
+            <i class="far fa-save material-icons prefix"></i>
             </button>
         </td>
     </tr>

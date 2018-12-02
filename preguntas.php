@@ -14,11 +14,10 @@
     <head>
         <!--Import Google Icon Font-->
         <title>Preguntas</title>
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+        
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-        <link rel="stylesheet" href="css/style.css">
+        <script src="js/all.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
         <!--Let browser know website is optimized for mobile-->
@@ -150,12 +149,12 @@
                         <tr>
                             <td>
                                 <a href="miscursos.php" data-position="left" data-tooltip="Cancelar" class="red btn waves-effect waves-light tooltipped center" name="btn_can">
-                                    <i class="material-icons">close</i>
+                                <i class="fas fa-times material-icons prefix"></i>
                                 </a>
                             </td>
                             <td>
                                 <button data-position="right" data-tooltip="Enviar" class=" right green btn waves-effect waves-light tooltipped" type="submit" name="btn_res">
-                                    <i class="material-icons">send</i>
+                                <i class="far fa-share-square material-icons"></i>
                                 </button>
                             </td>
                         </tr>

@@ -16,7 +16,7 @@ if(isset($_SESSION['nombre'])){
         <div class="nav-wrapper">
           <a href="index.php" class="brand-logo"><i class="fab fa-studiovinari fa-2x"></i></a>
           <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].'<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].' <i class="fas fa-sort-down material-icons"></i></a></li>
           </ul>
         </div>
         
@@ -37,7 +37,7 @@ if(isset($_SESSION['nombre'])){
         <div class="nav-wrapper">
           <a href="index.php" class="brand-logo"><i class="fab fa-studiovinari fa-2x"></i></a>
           <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].'<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].' <i class="fas fa-sort-down material-icons"></i></a></li>
           </ul>
         </div>
         
@@ -57,7 +57,7 @@ if(isset($_SESSION['nombre'])){
         <div class="nav-wrapper">
           <a href="index.php" class="brand-logo"><i class="fab fa-studiovinari fa-2x"></i></a>
           <ul class="right hide-on-med-and-down">
-              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].'<i class="material-icons right">arrow_drop_down</i></a></li>
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">'.$_SESSION['nombre'].' <i class="fas fa-sort-down material-icons"></i></a></li>
           </ul>
         </div>
         

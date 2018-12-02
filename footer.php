@@ -7,9 +7,9 @@
               
               <div class="col s12 center-align">
                 <div class="redes">
-                  <a class="white-text" href="#"><i class="fab fa-facebook-f"></i></a>
-                  <a class="white-text" href="#"><i class="fab fa-instagram"></i></a>
-                  <a class="white-text section" href="#"><i class="fab fa-twitter"></i></a>
+                  <a class="white-text" href="#"><i class="fab fa-facebook-f fa-2x"></i></a><span>&nbsp;</span>
+                  <a class="white-text" href="#"><i class="fab fa-instagram fa-2x"></i></a></span>
+                  <a class="white-text section" href="#"><i class="fab fa-twitter fa-2x"></i></a></span>
                 </div>
                 <div class="divider"></div>
                 <a href="contacto.php" class="white-text section contacto">Otras Consultas</a>

@@ -2,12 +2,10 @@
 <html lang='es'>
 
 <head>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+  
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
-  <link rel="stylesheet" href="css/style.css">
+  <script src="js/all.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!--Let browser know website is optimized for mobile-->
@@ -31,26 +29,26 @@
             <h2 class="center-align section">Escribinos</h2>
             <div class="row">
                 <div class="input-field col s6">
-                    <i class="material-icons prefix">account_circle</i>
+                    <i class="fas fa-user-circle material-icons prefix"></i>
                     <input id="nombre" type="text" class="validate" name="nombre" required>
                     <label for="nombre">Nombre</label>
                 </div>
                 <div class="input-field col s6">
-                    <i class="material-icons prefix">help</i>
+                    <i class="far fa-envelope material-icons prefix"></i>
                     <input id="apellido" type="text" class="validate" name="asunto" required>
                     <label for="apellido">Asunto</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">email</i>
+                    <i class="material-icons prefix fas fa-at"></i>
                     <input id="email" type="email" class="validate" name="email" required>
                     <label for="email">Email</label>
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col s12">
-                    <i class="material-icons prefix">chat_bubble</i>
+                    <i class="fas fa-comments material-icons prefix"></i>
                     <textarea id="icon_prefix2" class="materialize-textarea" name="comentarios" required></textarea>
                     <label for="icon_prefix2">Cometarios</label>
                 </div>
@@ -59,7 +57,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <button class="btn waves-effect waves-light right" type="submit" name="btn_con">Enviar
-                        <i class="material-icons right">send</i>
+                        <i class="far fa-share-square material-icons"></i>
                     </button>
                 </div>
             </div>
