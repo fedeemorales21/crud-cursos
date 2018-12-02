@@ -56,6 +56,11 @@
 
             <div class="row">
                 <div class="input-field col s12">
+                <a class="btn waves-effect waves-light left" href="index.php">
+                        <i class="fas fa-chevron-left"></i>
+                        Volver
+                    </a>
+
                     <button class="btn waves-effect waves-light right" type="submit" name="btn_con">Enviar
                         <i class="far fa-share-square material-icons"></i>
                     </button>
@@ -77,13 +82,28 @@
 
             if ($err==0) {
                 
-                $exito = email($destinatario,$asunto,$texto,$header); 
+                echo "<div class='green lighten-5 container section'>
+                        <h5 class='center'>
+                        <i class='fas fa-check fa-2x'></i>
+                            Mensaje enviado.
+                        </h5>
+                       <h2 class='center'><a href='index.php'>Volver</a></h2>
+                    </div>";
+                // $exito = email($destinatario,$asunto,$texto,$header); 
     
-                if ($exito) {
-                    echo "<p>Mensaje enviado</p>";
-                }else {
-                    echo "<p>Mensaje NO enviado</p>";
-                }
+                // if ($exito) {
+                //     echo "<p>Mensaje enviado</p>";
+                // }else {
+                //     echo "<p>Mensaje NO enviado</p>";
+                // }
+            }else {
+                echo "<div class='green lighten-5 container section'>
+                    <h5 class='center'>
+                        <i class='fas fa-exclamation-circle fa-2x'></i>
+                        No se pudo enviar.
+                    </h5>
+                    <h2 class='center'><a href='contacto.php'>Volver a intentar</a></h2>
+                </div>";    
             }
         }
         ?>
