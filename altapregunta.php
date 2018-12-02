@@ -32,9 +32,9 @@
 <?php
     if (isset($_POST['btn_preg'])) {
       $err=0;
-      $preg_desc = ( isset($_POST['desc']) && !empty($_POST['desc']) )? htmlentities(addslashes($_POST["desc"])):$err++;
-      $preg_tipo =  ( isset($_POST['tipo']) && !empty($_POST['tipo']) )? htmlentities(addslashes($_POST["tipo"])):$err++;
-      $preg_curso =  ( isset($_POST['curso']) && !empty($_POST['curso']) )? htmlentities(addslashes($_POST["curso"])):$err++;
+      $preg_desc = ( isset($_POST['desc']) && !empty($_POST['desc']) && strlen($_POST['desc'])<=255 )? htmlentities(addslashes($_POST["desc"])):$err++;
+      $preg_tipo =  ( isset($_POST['tipo']) && !empty($_POST['tipo']) && $_POST['tipo']=='texto' || $_POST['tipo']=='opciones' )? htmlentities(addslashes($_POST["tipo"])):$err++;
+      $preg_curso =  ( isset($_POST['curso']) && !empty($_POST['curso']) && is_int($_POST['curso']) )? htmlentities(addslashes($_POST["curso"])):$err++;
 
       if ($err==0) {
         
@@ -51,12 +51,52 @@
 
 <main class="container">
     <h1 class="center-align">Preguntas</h1>
+    <div class="divider"></div>
        <?php
        include 'conexion.php';
        ?>
-       <?php
-       $registros = $base->query("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod")->fetchAll(PDO::FETCH_OBJ);
-       ?>
+       <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+        <div class="row center-align">
+          <div class="input-gropu col s8">
+            <select name="curso_selec">
+              <option value="" disabled selected>Curso</option>
+                 <?php
+                    $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
+                    foreach ($reg as $curso){        
+                      echo "<option value='$curso->curso_nombre'>
+                      $curso->curso_nombre
+                      </option>";
+                    }
+                ?> 
+            </select>
+            <div>
+              <button class="btn waves-effect waves-light green center section btn-small btn_f right" type="submit" name="filt">
+                <i class="fas fa-search material-icons"></i>
+              </button>
+            </div>          
+          </div>
+        </div>
+      </form>
+
+
+      <?php
+        if(isset($_POST['filt'])){
+            $filtro='';
+            $curso= (isset($_POST["curso_selec"]) && !empty($_POST["curso_selec"]))? $_POST["curso_selec"]:"";
+                        
+            if ($curso != "") {
+                $filtro.= " WHERE c.curso_nombre = '$curso'";
+            }
+            
+            $sql = ("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod $filtro ORDER BY c.curso_cod");
+
+            $registros=$base->query($sql)->fetchAll(PDO::FETCH_OBJ);
+        }else {
+          $registros = $base->query("SELECT * FROM cursos c JOIN preguntas p ON c.curso_cod= p.curso_cod ORDER BY c.curso_cod")->fetchAll(PDO::FETCH_OBJ);
+        }
+    ?>
+      <div class="divider"></div>
+
        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap">
        <table class='highlight centered responsive-table'>
           <thead>
@@ -91,16 +131,16 @@
                 
         <tr>
           <td></td>
-          <td><input type='text' name='desc' id="desc"></td>
+          <td><input type='text' name='desc' id="desc" required></td>
           <td>
-            <select name="tipo">
+            <select name="tipo" required>
               <option value='' disabled selected>Tipo</option>
               <option value='opciones'>Opciones</option>
               <option value='texto'>Texto</option>
               </select>
           </td>
           <td>
-          <select name='curso'>
+          <select name='curso' required>
             <option value="" disabled selected>Curso</option>
             <?php
               $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
