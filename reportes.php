@@ -22,6 +22,7 @@
     <?php include 'conexion.php';?>
   <main class="container section">
     <h1 class="center-align section">Reporte</h1>
+    <span class="fechapdf">Fecha de reporte <?php echo date("d/m/y"); ?></span>
 
     <div class="container " id="filtros">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>

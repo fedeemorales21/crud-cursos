@@ -26,6 +26,7 @@ a.white-text.section.contacto {
 i.fab.fa-studiovinari.fa-2x {
     font-size: 1.5em;
 }
+.fechapdf{display: none;}
 
 @media print{
     .section {
@@ -37,6 +38,8 @@ i.fab.fa-studiovinari.fa-2x {
         text-align: center;
     }
 
+    .fechapdf{display: block;}
+    
     h1 {
         font-size: 4.2rem;
         line-height: 110%;
@@ -103,8 +106,15 @@ i.fab.fa-studiovinari.fa-2x {
         border-color: inherit;
     }
 
-#enbabezado,#filtros,#imp,#footer{display: none;}
-
+    #enbabezado,#filtros,#imp,#footer,head{display: none;}
+    body {  
+        font-size:14pt; 
+        font-family:"times new roman",times;
+        color:#000;
+        background-color:#FFFFFF; 	
+        width:100%;
+        border:none;
+    }
 
 }
 
