@@ -3,7 +3,7 @@
 
 <head>
   <!--Import Google Icon Font-->
-  <title>Mis Cursos</title>
+  <title>Encuestas</title>
   <script src="js/all.js"></script>
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
@@ -48,7 +48,10 @@
           </div>";
         }
       }else {
-        echo "<div class='amber lighten-5 container section'><h5 class='center'><i class='fas fa-exclamation-circle fa-2x'></i> No tiene preguntas para responder.</h5></div>";
+        echo "<div class='amber lighten-5 container section'>
+        <h5 class='center'><i class='fas fa-exclamation-circle fa-2x'></i> No tiene preguntas para responder.</h5>
+        <h6 class='center'><a href='index.php'>Volver</a></h6>
+        </div>";
         }        
       }else {
           header("Location:index.php");
