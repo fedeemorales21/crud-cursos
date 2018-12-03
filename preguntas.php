@@ -37,7 +37,8 @@
             <?php
                 $cod=$_GET['id'];
                 $alu=$_GET['us'];
-                $sql="SELECT * FROM preguntas p JOIN cursos c ON (p.curso_cod=c.curso_cod) JOIN curso_alumno a ON (a.curso_nro=c.curso_cod) WHERE c.curso_cod =:cur AND a.alumno_nro=:alu";
+                $sql="SELECT * FROM preguntas p JOIN cursos c ON (p.curso_cod=c.curso_cod) JOIN curso_alumno a ON (a.curso_nro=c.curso_cod) 
+                WHERE c.curso_cod =:cur AND a.alumno_nro=:alu";
                 $resultado=$base->prepare($sql);
                 $resultado->execute(array(":cur"=>$cod,":alu"=>$alu));   
 

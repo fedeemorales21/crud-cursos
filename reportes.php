@@ -20,9 +20,9 @@
      <?php include "navbar.php"; ?>
     <?=$nav?>
     <?php include 'conexion.php';?>
-  <main class="container section">
+<main class="container section">
     <h1 class="center-align section">Reporte</h1>
-    <span class="fechapdf">Fecha de reporte <?php echo date("d/m/y"); ?></span>
+    <span class="fechapdf center">Fecha de reporte <?php date_default_timezone_set('UTC');echo date("d/m/y"); ?></span>
 
     <div class="container " id="filtros">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
@@ -42,27 +42,27 @@
                             }
                         ?> 
                     </select>
-                </div>
+                </div><!-- fincurso -->
                 
 
                 <div class="input-field col s3">
-                <select name='profe'>
-                    <option value="" disabled selected>Profesor</option>
-                    <?php
-                    $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
-                    foreach ($reg as $curso){
-                    
-                    echo "<option value='$curso->curso_profesor'>
-                        $curso->curso_profesor
-                    </option>";
-                    }
-                    ?>
-                </select>
-                </div>
+                    <select name='profe'>
+                        <option value="" disabled selected>Profesor</option>
+                        <?php
+                        $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
+                        foreach ($reg as $curso){
+                        
+                        echo "<option value='$curso->curso_profesor'>
+                            $curso->curso_profesor
+                        </option>";
+                        }
+                        ?>
+                    </select>
+                </div><!-- finprof -->
                 <div class="input-field col s3">
-                    <input type="text" class="datepicker" placeholder="Fecha" name="fecha">
+                    <input type="text" class="datepicker" placeholder="Fecha" name="fecha" value="<?php if( isset($_POST['filt']) && isset($_POST['fecha']) ){echo $_POST['fecha'];} ?>" >
                 </div>
-                <div class=" col s2">
+                <div class="col s2">
                     <p>
                         <label>
                             <input name="ord" type="radio" value='c.curso_fecha' />
@@ -75,15 +75,13 @@
                             <span>Profesor</span>
                         </label>
                     </p>
-                </div>
+                </div><!-- fin ord -->
                       <p><button class="btn waves-effect waves-light green center section btn-small btn_f" type="submit" name="filt">
-                        <i class="fas fa-search material-icons"></i>
-                        </button></p>
-            </div>
+                        <i class="fas fa-search material-icons"></i></button></p>
+            </div>  <!--  fin row -->
          
         </form>
-    </div>
-    
+    </div><!-- finfiltros -->
     <?php
         if(isset($_POST['filt'])){
             $filtro='';
@@ -128,8 +126,7 @@
               <th>Profesor</th>
               <th>Fecha</th>
               <th>Cantidad de Respuestas</th>
-              
-          </tr>
+            </tr>
         </thead>
 
         <tbody>
@@ -144,22 +141,19 @@
                 </tr>
             <?php endforeach?>
         </tbody>
-      </table>
-    <div id="imp">
-      <div class="fixed-action-btn">
-            <a class="btn-floating btn-large red">
-            <i class="fas fa-print fa-lg"></i>
-        </a>
-        <ul>
-            <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Excel" onclick="reporteExcel();">
-            <i class="fas fa-file-csv fa-lg"></i></a></li>
-            <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="PDF" href="javascript:window.print();"><i class="fa-lg far fa-file-pdf"></i></a></li>
-        </ul>
-    </div>
-    </div>
+    </table>
+        <div id="imp">
+            <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red"><i class="fas fa-print fa-lg"></i></a>
+                    <ul>
+                        <li><a class="btn-floating green tooltipped" data-position="left" data-tooltip="Excel" onclick="reporteExcel();"><i class="fas fa-file-csv fa-lg"></i></a></li>
+                        <li><a class="btn-floating blue tooltipped" data-position="left" data-tooltip="Imprimir" href="javascript:window.print();"><i class="fa-lg far fa-file-pdf"></i></a></li>
+                    </ul>
+            </div>
+        </div>
     
 
-  </main>
+</main>
 
   <?php include "footer.php" ?>
   <?=footer()?>
@@ -167,7 +161,14 @@
   <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
-    
+    <script >
+        document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.datepicker');
+        var instances = M.Datepicker.init(elems, {
+            format : "yyyy-mm-dd"
+        });
+    });
+    </script>
 </body>
 
 </html>
