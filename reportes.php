@@ -65,13 +65,13 @@
                 <div class="col s2">
                     <p>
                         <label>
-                            <input name="ord" type="radio" value='c.curso_fecha' />
+                            <input name="ord" type="radio" value='fecha' <?php if( isset($_POST['filt']) && $_POST['ord']=='fecha' ){echo "checked";} ?>/>
                             <span>Fecha</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="ord" type="radio" value="c.curso_profesor" />
+                            <input name="ord" type="radio" value="prof" <?php if( isset($_POST['filt']) && $_POST['ord']=='prof' ){echo "checked";} ?> />
                             <span>Profesor</span>
                         </label>
                     </p>
@@ -82,6 +82,10 @@
          
         </form>
     </div><!-- finfiltros -->
+    <?php
+        $base->prepare("SET @rta1 = :rta1, @rta2 = :rta2, @rta3 = :rta3, @rta4 = :rta4, @rta5 = :rta5")->execute(array(":rta1"=>0,":rta2"=>0,":rta3"=>0,":rta4"=>0,":rta5"=>0));
+    
+    ?>
     <?php
         if(isset($_POST['filt'])){
             $filtro='';
@@ -102,42 +106,132 @@
             }
 
             if ($ord != "") {
-                $orden.= " ORDER BY $ord";
+                $orden.= " , '$ord'";
             }
 
-            $sql="SELECT DISTINCT p.preg_desc AS preg,c.curso_nombre AS cur,c.curso_profesor AS prof,c.curso_fecha AS fecha, COUNT(e.preg_nro) AS cant
-            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) JOIN encuesta e ON (c.curso_cod=e.curso_cod)
-            WHERE p.preg_nro= e.preg_nro $filtro GROUP BY e.preg_nro $orden";
+            $sql = "SELECT 
+            DISTINCT p.preg_desc AS preg,
+            c.curso_nombre AS cur,
+            c.curso_profesor AS prof,
+            c.curso_fecha AS fecha,
+            '' texto,
+            sum(case e.rta when 1 then @rta1 + 1 end) rta1,
+            sum(case e.rta when 2 then @rta2 + 1 end) rta2,
+            sum(case e.rta when 3 then @rta3 + 1 end) rta3,
+            sum(case e.rta when 4 then @rta4 + 1 end) rta4,
+            sum(case e.rta when 5 then @rta5 + 1 end) rta5
+            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
+                JOIN encuesta e ON (c.curso_cod=e.curso_cod)
+            WHERE p.preg_nro= e.preg_nro AND p.preg_tipo = 'opciones'$filtro
+            GROUP BY e.preg_nro, p.preg_desc, c.curso_nombre, c.curso_profesor, c.curso_fecha 
+            
+            UNION
+            
+            SELECT 
+            p.preg_desc AS preg,
+            c.curso_nombre AS cur,
+            c.curso_profesor AS prof,
+            c.curso_fecha AS fecha,
+            e.observacion as texto,
+            0 rta1,
+            0 rta2,
+            0 rta3,
+            0 rta4,
+            0 rta5
+            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
+                JOIN encuesta e ON (c.curso_cod=e.curso_cod)
+            WHERE p.preg_tipo = 'texto'
+            ORDER BY cur, preg $orden";
 
             $registros=$base->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
 
         }else {
-            $registros=$base->query("SELECT DISTINCT p.preg_desc AS preg,c.curso_nombre AS cur,c.curso_profesor AS prof,c.curso_fecha AS fecha, COUNT(e.preg_nro) AS cant
-            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) JOIN encuesta e ON (c.curso_cod=e.curso_cod)
-             WHERE p.preg_nro= e.preg_nro GROUP BY e.preg_nro")->fetchAll(PDO::FETCH_OBJ);
+            $sql = "SELECT 
+            DISTINCT p.preg_desc AS preg,
+            c.curso_nombre AS cur,
+            c.curso_profesor AS prof,
+            c.curso_fecha AS fecha,
+            '' texto,
+            sum(case e.rta when 1 then @rta1 + 1 end) rta1,
+            sum(case e.rta when 2 then @rta2 + 1 end) rta2,
+            sum(case e.rta when 3 then @rta3 + 1 end) rta3,
+            sum(case e.rta when 4 then @rta4 + 1 end) rta4,
+            sum(case e.rta when 5 then @rta5 + 1 end) rta5
+            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
+                JOIN encuesta e ON (c.curso_cod=e.curso_cod)
+            WHERE p.preg_nro= e.preg_nro AND p.preg_tipo = 'opciones'
+            GROUP BY e.preg_nro, p.preg_desc, c.curso_nombre, c.curso_profesor, c.curso_fecha
+            
+            UNION
+            
+            SELECT 
+            p.preg_desc AS preg,
+            c.curso_nombre AS cur,
+            c.curso_profesor AS prof,
+            c.curso_fecha AS fecha,
+            e.observacion as texto,
+            0 rta1,
+            0 rta2,
+            0 rta3,
+            0 rta4,
+            0 rta5
+            FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
+                JOIN encuesta e ON (c.curso_cod=e.curso_cod)
+            WHERE p.preg_tipo = 'texto'
+            ORDER BY cur, preg";
+
+
+            $registros=$base->query($sql)->fetchAll(PDO::FETCH_OBJ);
         }
     ?>
     <table  class="highlight centered" id="tabla">
         <thead>
-          <tr>
-              <th>Pregunta</th>
-              <th>Curso</th>
-              <th>Profesor</th>
-              <th>Fecha</th>
-              <th>Cantidad de Respuestas</th>
+            <tr>
+                <th>Curso</th>
+                <th>Profesor</th>
+                <th>Pregunta</th>
+                <th>Respuesta escrita</th>
+                <th>Excelente</th>
+                <th>Muy Bueno</th>
+                <th>Bueno</th>
+                <th>Regular</th>
+                <th>Malo</th>
+                <th>Respondieron</th>
+                <th>Fecha</th>
             </tr>
         </thead>
 
         <tbody>
         
-            <?php foreach ($registros as $res) : ?>
+            <?php foreach ($registros as $res) :?>
                 <tr>
-                    <td><?= $res->preg?></td>
-                    <td><?= $res->cur ?></td>
+                    <?php 
+                        $ex= $res->rta1;
+                        $mb= $res->rta2;
+                        $bn= $res->rta3;
+                        $re = $res->rta4;
+                        $ma= $res->rta5;
+
+                        if($ex == null){$ex = 0;}
+                        if($mb == null){$mb = 0;}
+                        if($bn == null){$bn = 0;}
+                        if($re == null){$re = 0;}
+                        if($ma == null){$ma = 0;}
+
+                        $sum=$ex+$mb+$bn+$re+$ma;
+                     ?>
+                    <td><?= $res->cur?></td>
                     <td><?= $res->prof ?></td>
+                    <td><?= $res->preg ?></td>
+                    <td><?php if($res->texto != ""){echo $res->texto;} ?></td>
+                    <td><?= $ex ?></td>
+                    <td><?= $mb ?></td>
+                    <td><?= $bn ?></td>
+                    <td><?= $re ?></td>
+                    <td><?= $ma ?></td>
+                    <td><?= $sum ?></td>
                     <td><?= $res->fecha ?></td>
-                    <td><?= $res->cant ?></td>
                 </tr>
             <?php endforeach?>
         </tbody>
@@ -160,15 +254,16 @@
 
   <!--JavaScript at end of body for optimized loading-->
     <script type="text/javascript" src="js/materialize.min.js"></script>
-    <script type="text/javascript" src="js/script.js"></script>
-    <script >
+    <!-- <script type="text/javascript" src="js/script.js"></script> -->
+    <!-- <script >
         document.addEventListener('DOMContentLoaded', function() {
         var elems = document.querySelectorAll('.datepicker');
         var instances = M.Datepicker.init(elems, {
             format : "yyyy-mm-dd"
         });
     });
-    </script>
+    </script> -->
+    <script src="js/script-modificado.js"></script>
 </body>
 
 </html>
