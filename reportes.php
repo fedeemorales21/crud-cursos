@@ -22,7 +22,7 @@
     <?php include 'conexion.php';?>
 <main class="container section">
     <h1 class="center-align section">Reporte</h1>
-    <span class="fechapdf center">Fecha de reporte <?php date_default_timezone_set('UTC');echo date("d/m/y"); ?></span>
+    <span class="fechapdf center">Fecha de reporte <?php date_default_timezone_set('America/Argentina/Buenos_Aires');echo date("d/m/y"); ?></span>
 
     <div class="container " id="filtros">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post'>
@@ -47,7 +47,7 @@
 
                 <div class="input-field col s3">
                     <select name='profe'>
-                        <option value="" disabled selected>Profesor</option>
+                        <option value="<?php echo $filtroprof ?>" disabled selected>Profesor</option>
                         <?php
                         $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
                         foreach ($reg as $curso){
@@ -65,13 +65,13 @@
                 <div class="col s2">
                     <p>
                         <label>
-                            <input name="ord" type="radio" value='fecha' <?php if( isset($_POST['filt']) && $_POST['ord']=='fecha' ){echo "checked";} ?>/>
+                            <input name="ord" type="radio" value='fecha' <?php if( isset($_POST['filt']) && isset($_POST['ord']) && $_POST['ord']=='fecha' ){echo "checked";} ?>/>
                             <span>Fecha</span>
                         </label>
                     </p>
                     <p>
                         <label>
-                            <input name="ord" type="radio" value="prof" <?php if( isset($_POST['filt']) && $_POST['ord']=='prof' ){echo "checked";} ?> />
+                            <input name="ord" type="radio" value="prof" <?php if( isset($_POST['filt']) && isset($_POST['ord']) && $_POST['ord']=='prof' ){echo "checked";} ?> />
                             <span>Profesor</span>
                         </label>
                     </p>
@@ -88,32 +88,35 @@
     ?>
     <?php
         if(isset($_POST['filt'])){
-            $filtro='';
-            $orden='';
+            $filtrocurs;
+            $filtroprof='';
+            $filtrocurs='';
+            $filtrofech='';
+            $orden='cur, preg';
             $profesor= (isset($_POST["profe"]) && !empty($_POST["profe"]))? $_POST["profe"]:"";
             $curso= (isset($_POST["curso"]) && !empty($_POST["curso"]))? $_POST["curso"]:"";
             $fecha= (isset($_POST["fecha"]) && !empty($_POST["fecha"]))? $_POST["fecha"]:"";
             $ord=(isset($_POST["ord"]) && !empty($_POST["ord"]))? $_POST["ord"]:"";
 
             if ($profesor != "") {
-                $filtro.= " AND c.curso_profesor = '$profesor'";
+                $filtroprof.= " AND c.curso_profesor = '$profesor'";
             }
             if ($curso != "") {
-                $filtro.= " AND c.curso_nombre = '$curso'";
+                $filtrocurs.= " AND c.curso_nombre = '$curso'";
             }
             if ($fecha != "") {
-                $filtro.= " AND c.curso_fecha = '$fecha'";
+                $filtrofech.= " AND c.curso_fecha = '$fecha'";
             }
 
             if ($ord != "") {
-                $orden.= " , '$ord'";
+                $orden = "$ord, cur, preg";
             }
 
             $sql = "SELECT 
             DISTINCT p.preg_desc AS preg,
             c.curso_nombre AS cur,
             c.curso_profesor AS prof,
-            c.curso_fecha AS fecha,
+            DATE_FORMAT(c.curso_fecha,'%d/%m/%Y') AS fecha,
             '' texto,
             sum(case e.rta when 1 then @rta1 + 1 end) rta1,
             sum(case e.rta when 2 then @rta2 + 1 end) rta2,
@@ -122,8 +125,8 @@
             sum(case e.rta when 5 then @rta5 + 1 end) rta5
             FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
                 JOIN encuesta e ON (c.curso_cod=e.curso_cod)
-            WHERE p.preg_nro= e.preg_nro AND p.preg_tipo = 'opciones'$filtro
-            GROUP BY e.preg_nro, p.preg_desc, c.curso_nombre, c.curso_profesor, c.curso_fecha 
+            WHERE p.preg_nro= e.preg_nro AND p.preg_tipo = 'opciones'$filtrocurs $filtroprof $filtrofech
+            GROUP BY e.preg_nro, p.preg_desc, c.curso_nombre, c.curso_profesor, c.curso_fecha
             
             UNION
             
@@ -131,7 +134,7 @@
             p.preg_desc AS preg,
             c.curso_nombre AS cur,
             c.curso_profesor AS prof,
-            c.curso_fecha AS fecha,
+            DATE_FORMAT(c.curso_fecha,'%d/%m/%Y') AS fecha,
             e.observacion as texto,
             0 rta1,
             0 rta2,
@@ -140,8 +143,8 @@
             0 rta5
             FROM preguntas p JOIN cursos c ON (p.curso_cod = c.curso_cod) 
                 JOIN encuesta e ON (c.curso_cod=e.curso_cod)
-            WHERE p.preg_tipo = 'texto'
-            ORDER BY cur, preg $orden";
+            WHERE p.preg_tipo = 'texto'$filtrocurs $filtroprof $filtrofech
+            ORDER BY $orden";
 
             $registros=$base->query($sql)->fetchAll(PDO::FETCH_OBJ);
 
@@ -151,7 +154,7 @@
             DISTINCT p.preg_desc AS preg,
             c.curso_nombre AS cur,
             c.curso_profesor AS prof,
-            c.curso_fecha AS fecha,
+            DATE_FORMAT(c.curso_fecha,'%d/%m/%Y') AS fecha,
             '' texto,
             sum(case e.rta when 1 then @rta1 + 1 end) rta1,
             sum(case e.rta when 2 then @rta2 + 1 end) rta2,
@@ -169,7 +172,7 @@
             p.preg_desc AS preg,
             c.curso_nombre AS cur,
             c.curso_profesor AS prof,
-            c.curso_fecha AS fecha,
+            DATE_FORMAT(c.curso_fecha,'%d/%m/%Y') AS fecha,
             e.observacion as texto,
             0 rta1,
             0 rta2,

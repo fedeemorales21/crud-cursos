@@ -84,7 +84,7 @@
         <tr>
             <td></td>
             <td><input type='text' id="nombre" name='nom' requied ></td>
-            <td><input type='text' value="<?php echo $prof; ?>" disabled></td>
+            <td><input type='text' id="prof" value="<?php echo $prof; ?>" disabled></td>
             <td><input type='text' id="desc" name='desc' requied></td>
             <td><input type="text" id="fecha" class="datepicker" name='fecha'></td>
             <td>
@@ -105,7 +105,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/script-modificado.js"></script>
 
 </body>
 </html>

@@ -116,7 +116,7 @@
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
   
-  <script src="js/script.js"></script>
+  <script src="js/script-modificado.js"></script>
   
 </body>
 

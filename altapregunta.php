@@ -42,6 +42,8 @@
         $resultado= $base->prepare($sql);
         $resultado->execute(array(":descr"=>$preg_desc,":tipo"=>$preg_tipo,":curso"=>$preg_curso));
         header("Location:altapregunta.php");
+      }else {
+        header("Location:altapregunta.php");
       }
     }
       
@@ -132,17 +134,17 @@
                 
         <tr>
           <td></td>
-          <td><input type='text' name='desc' id="desc" required></td>
+          <td><input type='text' name='desc' id="desc" ></td>
           <td>
-            <select name="tipo" required>
-              <option value='' disabled selected>Tipo</option>
+            <select name="tipo" id="tipo">
+              <option value=' ' disabled selected>Tipo</option>
               <option value='opciones'>Opciones</option>
               <option value='texto'>Texto</option>
               </select>
           </td>
           <td>
-          <select name='curso' required>
-            <option value="" disabled selected>Curso</option>
+          <select name='curso' id="curso" >
+            <option value=" " disabled selected>Curso</option>
             <?php
               $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
               foreach ($reg as $curso){

@@ -31,9 +31,8 @@ function reporteExcel(){
 }
 
 
-//registro -- FUNCIONA
+//registro
 
-// document.getElementById('formulario').addEventListener('submit',validar);
 
 var formulario1 = document.getElementById('formulario');
 if (formulario1 != null) {
@@ -90,9 +89,8 @@ if (formulario1 != null) {
     }
 }
 
-//login -- FUNCIONA
+//login
 
-//document.getElementById('flog').addEventListener('submit',validaLog);
 
 var formlog = document.getElementById('flog')
 if (formlog != null) {
@@ -116,7 +114,7 @@ if (formlog != null) {
 }
 
 
-//Agregar usuario -- FUNCIONA
+//Agregar usuario 
 
 var fadm_user = document.getElementById("fadm_user");
 if (fadm_user != null) {
@@ -177,13 +175,13 @@ if (fadm_user != null) {
     }
 }
 
-//Editar usuario -- NO FUNCIONA
+//Editar usuario 
 
 var fedit_user = document.getElementById("fedit_user");
 if (fedit_user != null) {
 
     fedit_user.onsubmit = function validaUser() {
-        let nombre,apellido,dni,telefono,email,pass,tipo,selec;
+        var nombre,apellido,dni,telefono,email,tipo,selec,exp;
 
         exp=/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/;
 
@@ -192,11 +190,11 @@ if (fedit_user != null) {
         dni = document.getElementById('dni').value;
         telefono = document.getElementById('tel').value;
         email = document.getElementById('email').value;
-        pass = document.getElementById('pass').value;
+       
         tipo = document.getElementById('tipo')
         selec = document.getElementById('tipo').selectedIndex;
 
-        if (nombre === "" || apellido === "" || dni === "" || telefono === "" || email === ""  || pass === "" ) {
+        if (nombre === "" || apellido === "" || dni === "" || telefono === "" || email === "") {
             alert("Complete los campos");
             return false;
         }
@@ -220,10 +218,7 @@ if (fedit_user != null) {
             alert("El campo email supera la cantidad de caracteres permitidos");
             return false;
         } 
-        else if (pass.length >255) {
-            alert("El campo constraseña supera la cantidad de caracteres permitidos");
-            return false;
-        }
+        
         else if (isNaN(telefono)|| isNaN(dni) ) {
             alert("El campo telefono y dni tienen que ser de valor numérico");
             return false;
@@ -238,12 +233,33 @@ if (fedit_user != null) {
     }
 }   
 
-//Alta curso -- AGREGA ANTES QUE VALIDE, NO FUNCIONA
+//Alta curso 
 
 var faltac = document.getElementById("faltac");
 if (faltac != null) {
-    //document.getElementById('faltac').addEventListener('submit',validaCurso);
     faltac.onsubmit = function validaCurso() {
+        let nombre,desc,fecha,prof;
+        nombre = document.getElementById('nombre').value;
+        desc = document.getElementById('desc').value;
+        fecha = document.getElementById('fecha').value;
+        prof = document.getElementById('prof').value; 
+
+        if (nombre === "" || desc === "" || fecha === "" || prof=="") {
+            alert("Complete los campos");
+            return false;
+        }else  if (nombre.length >50 || desc.length >255 || prof.length >50) {
+            alert("El campo nombre supera la cantidad de caracteres permitidos");
+            return false;
+        }
+    }
+}
+
+//Editar curso
+
+var feditc= document.getElementById("feditc");
+if (feditc != null) {
+
+    document.getElementById('feditc').onsubmit = function validaCurso() {
         let nombre,desc,fecha,prof;
         nombre = document.getElementById('nombre').value;
         desc = document.getElementById('desc').value;
@@ -260,89 +276,59 @@ if (faltac != null) {
             alert("Complete los campos");
             return false;
         }else if (prof.length >50) {
-            alert("El campo nombre supera la cantidad de caracteres permitidos");
+            alert("El campo profesor supera la cantidad de caracteres permitidos");
             return false;
         }
     }
 }
 
-//Editar curso -- NO FUNCIONA
-
-var feditc= document.getElementById("feditc");
-if (feditc != null) {
-    //document.getElementById('feditc').addEventListener('submit',validaCurso);
-
-    document.getElementById('feditc').onsubmit = function validaCurso() {
-        let nombre,desc,fecha,prof;
-        nombre = document.getElementsById('nombre').value;
-        desc = document.getElementsById('desc').value;
-        fecha = document.getElementsById('fecha').value;
-        prof = document.getElementsById('prof').value; 
-
-        if (nombre === "" || desc === "" || fecha === "") {
-            alert("Complete los campos");
-            return false;
-        }else  if (nombre.length >50 || desc.length >255) {
-            alert("El campo nombre supera la cantidad de caracteres permitidos");
-            return false;
-        }else  if (prof==="") {
-            alert("Complete los campos");
-            return false;
-        }else if (prof.length >50) {
-            alert("El campo nombre supera la cantidad de caracteres permitidos");
-            return false;
-        }
-    }
-}
-
-//altapregunta y editar preg -- NO LO PROBE
+//altapregunta y editar preg 
 var faltap = document.getElementById('faltap')
-    console.log(faltap)
+    
     if(faltap != null){
 
         faltap.onsubmit = function validaPreg() {
-            let desc,tipo,tiposel,curso,cursel;
-                    
-            desc = faltap[0].value;
-            tipo = document.getElementsById('tipo')
-            tiposel = document.getElementsById('tipo').selectedIndex;
-            // curso = document.getElementsById('curso')
-            // cursel = document.getElementsById('curso').selectedIndex;
+            var desc,tipo,curso,tiposel,cursel
+             
+            desc = document.getElementById('desc').value;
+            tipo = document.getElementById('tipo')
+            tiposel=tipo.selectedIndex
+            curso = document.getElementById('curso')
+            cursel=curso.selectedIndex
+            
         
-        
-            if (desc == "" ) {
+            if (desc=="" ) {
                 alert("Complete los campos");
                 return false;
-            }else if (tipo.options[tiposel].value==""){ 
+            }
+            else if (tipo.options[tiposel].value ==" " ){ 
                 alert ("Selecione un tipo") 
                 return false 
-            }else if (curso.options[cursel].value==""){ 
-                alert ("Selecione un tipo") 
+            }else if (curso.options[cursel].value==" "){ 
+                alert ("Selecione un curso") 
                 return false 
             }
 
         }
     }
-// document.getElementById('feditp').addEventListener('submit',validaCurso);
-
-// function validaPreg() {
-//     let desc,tipo,tiposel,curso,cursel;
-
-//     desc = document.getElementsById('desc').value;
-//     tipo = document.getElementsById('tipo')
-//     tiposel = document.getElementsById('tipo').selectedIndex;
-//     curso = document.getElementsById('curso')
-//     cursel = document.getElementsById('curso').selectedIndex;
 
 
-//     if (desc == "" ) {
-//         alert("Complete los campos");
-//         return false;
-//     }else if (tipo.options[tiposel].value==""){ 
-//         alert ("Selecione un tipo") 
-//         return false 
-//     }else if (curso.options[cursel].value==""){ 
-//         alert ("Selecione un tipo") 
-//         return false 
-//     }
-// }
+var feditp = document.getElementById('feditp')
+    
+    if(feditp != null){
+
+        feditp.onsubmit = function validaPreg() {
+            var desc
+             
+            desc = document.getElementById('desc').value;
+           
+            
+        
+            if (desc=="" ) {
+                alert("Complete los campos");
+                return false;
+            }
+            
+
+        }
+    }

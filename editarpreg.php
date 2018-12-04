@@ -63,13 +63,13 @@
     <tr>
       <td class="center">Descripción</td>
       <td><label for="desc"></label>
-      <input type="text" name="desc" id="desc" value="<?php echo $desc; ?>"></td>
+      <input type="text" name="desc" id="desc" value="<?php echo $desc; ?>" required></td>
     </tr>
     
     <tr>
       <td class="center">Tipo</td>
       <td><label for="tipo"></label>
-        <select name="tipo" id="tipo">
+        <select name="tipo" id="tipo" required>
           <option value='opciones' <?php if($tipo=='opciones'){echo "selected";}?>>Opciones</option>
           <option value='texto' <?php if($tipo=='texto'){echo "selected";}?>>Texto</option>
          </select>
@@ -80,7 +80,7 @@
       <td class="center">Curso</td>
       <td><label for="curso"></label>
       
-      <select name="cur" id="curso">
+      <select name="cur" id="curso" required>
         <?php
           $opc='';
           $reg = $base->query("SELECT * FROM cursos")->fetchAll(PDO::FETCH_OBJ);
@@ -121,7 +121,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/script-modificado.js"></script>
 
 </body>
 </html>
