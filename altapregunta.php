@@ -55,6 +55,7 @@
        <?php
        include 'conexion.php';
        ?>
+       <!-- filtro -->
        <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
         <div class="row center-align">
           <div class="input-gropu col s8">
@@ -97,7 +98,7 @@
     ?>
       <div class="divider"></div>
 
-       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap">
+       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap" onsubmit="validaPreg()">
        <table class='highlight centered responsive-table'>
           <thead>
             <tr>
@@ -172,7 +173,7 @@
 
 <!--JavaScript at end of body for optimized loading-->
 <script type="text/javascript" src="js/materialize.min.js"></script>
-<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript" src="js/script-modificado.js"></script>
 
 
 </body>

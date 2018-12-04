@@ -61,39 +61,39 @@
 <form name="form1" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" id="fedit_user">
   <table>
     <tr>
-      <input type="hidden" name="id" id="id" value="<?php echo $id; ?>"></td>
+      <input required type="hidden" name="id" id="id" value="<?php echo $id; ?>"></td>
     </tr>
     <tr>
       <td class="center">Nombre</td>
       <td>
         <label for="nom"></label>
-        <input type="text" name="nom" id="nombre" value="<?php echo $nom; ?>">
+        <input required type="text" name="nom" id="nombre" value="<?php echo $nom; ?>">
       </td>
     </tr>
     <tr>
       <td class="center">Apellido</td>
       <td><label for="ape"></label>
-      <input type="text" name="ape" id="apellido"value="<?php echo $ape; ?>"></td>
+      <input required type="text" name="ape" id="apellido"value="<?php echo $ape; ?>"></td>
     </tr>
     <tr>
       <td class="center">DNI</td>
       <td><label for="dni"></label>
-      <input type="text" name="dni" id="dni"value="<?php echo $dni; ?>"></td>
+      <input required type="text" name="dni" id="dni"value="<?php echo $dni; ?>"></td>
     </tr>
     <tr>
       <td class="center">Teléfono</td>
       <td><label for="tel"></label>
-      <input type="text" name="tel" id="tel"value="<?php echo $tel; ?>"></td>
+      <input required type="text" name="tel" id="tel" value="<?php echo $tel; ?>"></td>
     </tr>
     <tr>
       <td class="center">E-mail</td>
       <td><label for="mail"></label>
-      <input type="text" name="mail" id="email"value="<?php echo $mail; ?>"></td>
+      <input required type="text" name="mail" id="email"value="<?php echo $mail; ?>"></td>
     </tr>
     <tr>
       <td class="center">Tipo</td>
       <td><label for="tipo"></label>
-        <select name="tipo" id="tipo">
+        <select name="tipo" id="tipo" >
           <option value="g" <?php if($tipo=='g'){echo "selected";}?>>Alumno</option>
           <option value="p" <?php if($tipo=='p'){echo "selected";}?>>Profesor</option>
           <option value="a" <?php if($tipo=='a'){echo "selected";}?>>Administrador</option>
@@ -122,7 +122,7 @@
 
   <!--JavaScript at end of body for optimized loading-->
   <script type="text/javascript" src="js/materialize.min.js"></script>
-  <script type="text/javascript" src="js/script.js"></script>
+  <script type="text/javascript" src="js/script-modificado.js"></script>
 
 </body>
 </html>
