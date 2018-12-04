@@ -325,24 +325,24 @@ var faltap = document.getElementById('faltap')
     }
 // document.getElementById('feditp').addEventListener('submit',validaCurso);
 
-function validaPreg() {
-    let desc,tipo,tiposel,curso,cursel;
+// function validaPreg() {
+//     let desc,tipo,tiposel,curso,cursel;
 
-    desc = document.getElementsById('desc').value;
-    tipo = document.getElementsById('tipo')
-    tiposel = document.getElementsById('tipo').selectedIndex;
-    curso = document.getElementsById('curso')
-    cursel = document.getElementsById('curso').selectedIndex;
+//     desc = document.getElementsById('desc').value;
+//     tipo = document.getElementsById('tipo')
+//     tiposel = document.getElementsById('tipo').selectedIndex;
+//     curso = document.getElementsById('curso')
+//     cursel = document.getElementsById('curso').selectedIndex;
 
 
-    if (desc == "" ) {
-        alert("Complete los campos");
-        return false;
-    }if (tipo.options[tiposel].value==""){ 
-        alert ("Selecione un tipo") 
-        return false 
-    }if (curso.options[cursel].value==""){ 
-        alert ("Selecione un tipo") 
-        return false 
-    }
-}
+//     if (desc == "" ) {
+//         alert("Complete los campos");
+//         return false;
+//     }else if (tipo.options[tiposel].value==""){ 
+//         alert ("Selecione un tipo") 
+//         return false 
+//     }else if (curso.options[cursel].value==""){ 
+//         alert ("Selecione un tipo") 
+//         return false 
+//     }
+// }

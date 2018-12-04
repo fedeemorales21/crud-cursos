@@ -98,7 +98,7 @@
     ?>
       <div class="divider"></div>
 
-       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap" onsubmit="validaPreg()">
+       <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method='post' id="faltap" >
        <table class='highlight centered responsive-table'>
           <thead>
             <tr>

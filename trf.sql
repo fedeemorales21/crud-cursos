@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-12-2018 a las 00:28:34
+-- Tiempo de generación: 04-12-2018 a las 01:16:02
 -- Versión del servidor: 10.1.36-MariaDB
 -- Versión de PHP: 7.2.11
 
@@ -43,7 +43,8 @@ CREATE TABLE `cursos` (
 INSERT INTO `cursos` (`curso_cod`, `curso_nombre`, `curso_profesor`, `curso_desc`, `curso_fecha`) VALUES
 (2, 'JS', 'fede moral', 'En este curso aprender&aacute;s a. Programar con JavaScript; Comprender la arquitectura b&aacute;sica de un programa. Trabajar con eventos. Armar funciones.', '2019-04-23'),
 (3, 'CSS', 'fede moral', 'En este curso aprenderemos gratis a maquetar sitios Web con HTML5 y a brindar estilos con CSS. No necesitas conocimientos previos, pues empezaremos', '2019-04-25'),
-(7, 'adccc', 'liz lisa', 'aaaaaaaaaaaaaaa', '2018-11-14');
+(7, 'adccc', 'liz lisa', 'aaaaaaaaaaaaaaa', '2018-11-14'),
+(8, 'aaaaaaa', 'Atilio Gonzalez', 'aaaaaaaaaaaaaaaaaaaaaasdas', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -146,11 +147,11 @@ INSERT INTO `personas` (`cod_persona`, `nombre`, `apellido`, `dni`, `telefono`, 
 (8, 'Roberto', 'Lopez', 123, 123, 'yo@gmail.com', '$2y$10$dkZqH2bEQod2u1BpN1rtCeoHoxT/TiRr5uGdZCGW9InoYK4twhf5K', 'g'),
 (10, 'fdfdsfsd', 'fsddsfsd', 1233, 44444444, 'ffff@hotmail.com', '$2y$10$uPMmratXRC8mAemUg/HeDOPpJLv1HfbpwdO/G0x0qDmWwr9/3686O', 'g'),
 (13, 'rodolfo', 'depa', 123456789, 111111111, 'rododepa@hotmail.com', '$2y$10$Jr2nIVwXlsbUuvjJ5oV5LuR1h/2qPJqXwnvfTOfFMRMaUu/fIINwC', 'p'),
-(15, 'Federico', 'Morales', 38231553, 2147483647, 'fedeemorales21@gmail.com', '$2y$10$ShgOBzlAtdmKToII3WOT5uYU.8fixSgNhtOH4vQfEqOcmPoF6Z.Au', 'a'),
-(25, 'Atilio', 'Gonzalez', 38230962, 123456789, 'ati.gonzalez27@gmail.com', '$2y$10$1tEJsdvz9EY4C69cfYeR1OpG0sqSybldK9J0VqE9mB7fAzo.95oYG', 'g'),
+(25, 'Atilio', 'Gonzalez', 38230962, 123456789, 'ati.gonzalez27@gmail.com', '$2y$10$1tEJsdvz9EY4C69cfYeR1OpG0sqSybldK9J0VqE9mB7fAzo.95oYG', 'p'),
 (26, 'Usuario', 'Administrador', 12345678, 123456789, 'administrador@gmail.com', '$2y$10$h5BjYoSNF0iLgSkh0.g0A.1ZdSxnCtZu4ZGIRJ5Sp9JmSyU9g6s6C', 'a'),
 (27, 'Usuario', 'Profesor', 12345678, 123456789, 'profesor@gmail.com', '$2y$10$XHH9oSoUlOaklGpx2u2YTeY9hNej/bzaJaw5KEInPEPVoslg1YnpO', 'p'),
-(28, 'Usuario', 'Alumno', 12345678, 123456789, 'alumno@gmail.com', '$2y$10$lZuxG9c91AhN5g2YUF5MFeYnKSpveztt0RWpMTo1awJmF5j./upom', 'g');
+(28, 'Usuario', 'Alumno', 12345678, 123456789, 'alumno@gmail.com', '$2y$10$lZuxG9c91AhN5g2YUF5MFeYnKSpveztt0RWpMTo1awJmF5j./upom', 'g'),
+(29, 'fede', 'fede', 123456, 123, 'sdasdasdasdasd@ads.com', '$2y$10$01GfEXmVq9xELtEJLgeGvuspYUGGEaPAVFDhzLyRAJU4f5wnrRqAu', 'g');
 
 -- --------------------------------------------------------
 
@@ -268,13 +269,13 @@ ALTER TABLE `encuesta_obs`
 -- AUTO_INCREMENT de la tabla `personas`
 --
 ALTER TABLE `personas`
-  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `cod_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `preg_nro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `preg_nro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_pregunta`
